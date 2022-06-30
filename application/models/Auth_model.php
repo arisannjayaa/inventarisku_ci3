@@ -22,6 +22,16 @@ class Auth_model extends CI_Model
 			]
 		];
 	}
+
+	public function getUser()
+	{
+		$query = $this->db->get('tb_user');
+		if ($query->nums_row() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 
