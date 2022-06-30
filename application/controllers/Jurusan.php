@@ -15,7 +15,7 @@ class Jurusan extends CI_Controller
 			'heading' 		=> 'Master Data Jurusan',
 			'title'			=> 'Master Data Jurusan | InventarisKu',
 			'card_header'	=> 'List Data Jurusan',
-			'prodi'			=> $this->Jurusan_model->getAll()
+			'prodi'			=> $this->Jurusan_model->get_all()
 		];
 
 		$this->load->view('template/header', $data);

@@ -15,7 +15,7 @@ class Barang extends CI_Controller
 			'heading' 		=> 'Master Data Barang',
 			'title'			=> 'Master Data Barang | InventarisKu',
 			'card_header'	=> 'List Data Barang',
-			'barang'		=> $this->Barang_model->getAll()
+			'barang'		=> $this->Barang_model->get_all()
 		];
 
 		$this->load->view('template/header', $data);
@@ -33,6 +33,44 @@ class Barang extends CI_Controller
 		$this->load->view('template/header', $data);
 		$this->load->view('barang/tambah', $data);
 		$this->load->view('template/footer', $data);
+	}
+
+	public function add_prosess()
+	{
+		$rules = $this->Barang_model->rules();
+		$this->form_validation->set_rules($rules);
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('barang/tambah');
+		} else {
+			$this->Barang_model->insert();
+			redirect('barang');
+		}
+	}
+
+	public function edit($id)
+	{
+		$data = [
+			'heading' 		=> 'Edit Data Barang',
+			'title'			=> 'Edit Data Barang | InventarisKu',
+			'barang'		=> $this->Barang_model->get_details($id)
+		];
+
+		$this->load->view('template/header', $data);
+		$this->load->view('barang/edit', $data);
+		$this->load->view('template/footer', $data);
+	}
+
+	public function edit_prosess($id)
+	{
+		$rules = $this->Barang_model->rules();
+		$this->form_validation->set_rules($rules);
+		if ($this->form_validation->run() == FALSE) {
+			$data['barang'] = $this->Barang_model->get_details($id);
+			$this->load->view('barang/edit', $data);
+		} else {
+			$this->Barang_model->update();
+			redirect('barang');
+		}
 	}
 }
 

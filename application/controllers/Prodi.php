@@ -15,7 +15,7 @@ class Prodi extends CI_Controller
 			'heading' 		=> 'Master Data Prodi',
 			'title'			=> 'Master Data Prodi | InventarisKu',
 			'card_header'	=> 'List Data Prodi',
-			'prodi'			=> $this->Prodi_model->getAll()
+			'prodi'			=> $this->Prodi_model->get_all()
 		];
 
 		$this->load->view('template/header', $data);

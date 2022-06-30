@@ -67,16 +67,16 @@
 							</a>
 							<ul class="submenu ">
 								<li class="submenu-item ">
-									<a href="component-badge.html">Data Barang</a>
+									<a href="<?= base_url('barang') ?>">Data Barang</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="component-badge.html">Data Jurusan</a>
+									<a href="<?= base_url('jurusan') ?>">Data Jurusan</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="component-alert.html">Data Prodi</a>
+									<a href="<?= base_url('prodi') ?>">Data Prodi</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="component-badge.html">Data Users</a>
+									<a href="<?= base_url('users') ?>">Data Users</a>
 								</li>
 							</ul>
 						</li>

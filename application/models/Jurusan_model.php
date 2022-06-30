@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Jurusan_model extends CI_Model
 {
-	public function getAll()
+	public function getall()
 	{
 		$query = $this->db->get('tb_barang')->result();
 		return $query;

@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
-		<a href="#" class="btn btn-primary">Tambah</a>
+		<a href="<?= base_url('barang/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
 	<div class="card-body">
 		<table class="table" id="table1">
