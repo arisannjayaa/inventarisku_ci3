@@ -15,7 +15,8 @@ class Barang extends CI_Controller
 			'heading' 		=> 'Master Data Barang',
 			'title'			=> 'Master Data Barang | InventarisKu',
 			'card_header'	=> 'List Data Barang',
-			'barang'		=> $this->Barang_model->get_all()
+			'barang'		=> $this->Barang_model->get_all(),
+			'active'		=> 'active'
 		];
 
 		$this->load->view('template/header', $data);
@@ -40,9 +41,18 @@ class Barang extends CI_Controller
 		$rules = $this->Barang_model->rules();
 		$this->form_validation->set_rules($rules);
 		if ($this->form_validation->run() == FALSE) {
+			$data = [
+				'heading' 		=> 'Tambah Data Barang',
+				'title'			=> 'Master Data Barang | InventarisKu',
+				'card_header'	=> 'List Data Barang'
+			];
+
+			$this->load->view('template/header', $data);
 			$this->load->view('barang/tambah');
+			$this->load->view('template/footer', $data);
 		} else {
 			$this->Barang_model->insert();
+			$this->session->set_flashdata('add_success', 'Data berhasil ditambahkan');
 			redirect('barang');
 		}
 	}
@@ -69,8 +79,16 @@ class Barang extends CI_Controller
 			$this->load->view('barang/edit', $data);
 		} else {
 			$this->Barang_model->update();
+			$this->session->set_flashdata('update_success', 'Data berhasil diubah');
 			redirect('barang');
 		}
+	}
+
+	public function remove($id)
+	{
+		$this->Barang_model->delete($id);
+		$this->session->set_flashdata('delete_success', 'Data berhasil dihapus');
+		redirect('barang');
 	}
 }
 

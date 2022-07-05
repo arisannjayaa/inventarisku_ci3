@@ -59,13 +59,12 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
-
-						<li class="sidebar-item  has-sub">
+						<li class="sidebar-item has-sub">
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-stack"></i>
 								<span>Master Data</span>
 							</a>
-							<ul class="submenu ">
+							<ul class="submenu">
 								<li class="submenu-item ">
 									<a href="<?= base_url('barang') ?>">Data Barang</a>
 								</li>
@@ -81,14 +80,14 @@
 							</ul>
 						</li>
 
-						<li class="sidebar-item  ">
+						<li class="sidebar-item">
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Orders</span>
 							</a>
 						</li>
 
-						<li class="sidebar-item  ">
+						<li class="sidebar-item ">
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Transaksi</span>

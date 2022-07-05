@@ -45,7 +45,7 @@ class Barang_model extends CI_Model
 	{
 		$edit = array(
 			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('qty'),
+			'stok_barang' => $this->input->post('stok'),
 			'harga_barang' => $this->input->post('harga')
 		);
 		$this->db->where('id_barang', $this->input->post('id'));

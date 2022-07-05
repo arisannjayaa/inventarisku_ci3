@@ -9,18 +9,21 @@
 						</div>
 						<div class="col-md-8 form-group">
 							<input type="text" class="form-control" name="nama" placeholder="Nama Barang">
+							<small class="text-danger"><?= form_error('nama') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Stok Barang</label>
 						</div>
 						<div class="col-md-8 form-group">
 							<input type="number" class="form-control" name="stok" placeholder="Stok Barang">
+							<small class="text-danger"><?= form_error('stok') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Harga Barang</label>
 						</div>
 						<div class="col-md-8 form-group">
 							<input type="number" class="form-control" name="harga" placeholder="Harga Barang">
+							<small class="text-danger"><?= form_error('harga') ?></small>
 						</div>
 						<div class="col-sm-12 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
