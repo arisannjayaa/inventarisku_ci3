@@ -11,59 +11,45 @@ class Jurusan_model extends CI_Model
 				'label'	=> 'Nama',
 				'rules' => 'required|max_length[50]'
 			],
-			[
-				'field' => 'stok',
-				'label'	=> 'Stok',
-				'rules' => 'required|integer'
-			],
-			[
-				'field' => 'harga',
-				'label'	=> 'Harga',
-				'rules' => 'required|integer'
-			],
 		];
 	}
 
 	public function get_all()
 	{
-		$query = $this->db->get('tb_barang')->result();
+		$query = $this->db->get('tb_jurusan')->result();
 		return $query;
 	}
 
 	public function insert()
 	{
 		$insert = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('stok'),
-			'harga_barang' => $this->input->post('harga')
+			'nama_jurusan' => $this->input->post('nama')
 		);
-		$result = $this->db->insert('tb_barang', $insert);
+		$result = $this->db->insert('tb_jurusan', $insert);
 		return $result;
 	}
 
 	public function update()
 	{
 		$edit = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('qty'),
-			'harga_barang' => $this->input->post('harga')
+			'nama_jurusan' => $this->input->post('nama'),
 		);
-		$this->db->where('id_barang', $this->input->post('id'));
-		$result = $this->db->update('tb_barang', $edit);
+		$this->db->where('id_jurusan', $this->input->post('id'));
+		$result = $this->db->update('tb_jurusan', $edit);
 		return $result;
 	}
 
 	public function get_details($id)
 	{
-		$this->db->where('id_barang', $id);
-		$result = $this->db->get('tb_barang')->result();
+		$this->db->where('id_jurusan', $id);
+		$result = $this->db->get('tb_jurusan')->result();
 		return $result;
 	}
 
 	public function delete($id)
 	{
-		$this->db->where('id_barang', $id);
-		$result = $this->db->delete('tb_barang');
+		$this->db->where('id_jurusan', $id);
+		$result = $this->db->delete('tb_jurusan');
 		return $result;
 	}
 }

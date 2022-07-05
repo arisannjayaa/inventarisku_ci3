@@ -75,11 +75,17 @@ class Barang extends CI_Controller
 		$rules = $this->Barang_model->rules();
 		$this->form_validation->set_rules($rules);
 		if ($this->form_validation->run() == FALSE) {
-			$data['barang'] = $this->Barang_model->get_details($id);
+			$data = [
+				'heading' 		=> 'Edit Data Barang',
+				'title'			=> 'Edit Data Barang | InventarisKu',
+				'barang'		=> $this->Barang_model->get_details($id)
+			];
+			$this->load->view('template/header', $data);
 			$this->load->view('barang/edit', $data);
+			$this->load->view('template/footer', $data);
 		} else {
 			$this->Barang_model->update();
-			$this->session->set_flashdata('update_success', 'Data berhasil diubah');
+			$this->session->set_flashdata('update_success', 'Data berhasil diupdate');
 			redirect('barang');
 		}
 	}

@@ -3,6 +3,8 @@ if ($this->session->flashdata('add_success')) { ?>
 	<div class="alert alert-success"><?= $this->session->flashdata('add_success'); ?></div>
 <?php } elseif ($this->session->flashdata('delete_success')) { ?>
 	<div class="alert alert-danger"><?= $this->session->flashdata('delete_success'); ?></div>
+<?php } elseif ($this->session->flashdata('update_success')) { ?>
+	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
 <?php }
 ?>
 <div class="card">
@@ -14,7 +16,7 @@ if ($this->session->flashdata('add_success')) { ?>
 		<table class="table" id="table1">
 			<thead>
 				<tr>
-					<th style="width: 5%;">No</th>
+					<th style="width: 8%;">No</th>
 					<th>Nama</th>
 					<th>Stok</th>
 					<th>Harga</th>
@@ -26,7 +28,7 @@ if ($this->session->flashdata('add_success')) { ?>
 				$no = 1;
 				foreach ($barang as $key) { ?>
 					<tr>
-						<td style="width: 5%;"><?= $no++ ?></td>
+						<td style="width: 8%;"><?= $no++ ?></td>
 						<td><?= $key->nama_barang ?></td>
 						<td><?= $key->stok_barang ?></td>
 						<td><?= $key->harga_barang ?></td>

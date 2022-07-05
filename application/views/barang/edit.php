@@ -1,8 +1,8 @@
 <div class="card">
 	<div class="card-content">
 		<div class="card-body">
-			<form class="form form-horizontal" method="post" action="<?= base_url('barang/edit_prosess') ?>">
-				<?php foreach ($barang as $key) { ?>
+			<?php foreach ($barang as $key) { ?>
+				<form class="form form-horizontal" method="post" action="<?= base_url('barang/edit_prosess/') . $key->id_barang ?>">
 					<div class="form-body">
 						<div class="row">
 							<input type="hidden" class="form-control" name="id" placeholder="Id Barang" value="<?= $key->id_barang ?>">
@@ -30,8 +30,8 @@
 							</div>
 						</div>
 					</div>
-			</form>
-		<?php } ?>
+				</form>
+			<?php } ?>
 		</div>
 	</div>
 </div>
