@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card-content">
 		<div class="card-body">
-			<form class="form form-horizontal" method="post" action="<?= base_url('barang/add_prosess') ?>">
+			<form class="form form-horizontal" method="post" action="<?= base_url('barang/add_proses') ?>">
 				<div class="form-body">
 					<div class="row">
 						<div class="col-md-4">

@@ -17,6 +17,7 @@ if ($this->session->flashdata('add_success')) { ?>
 			<thead>
 				<tr>
 					<th style="width: 8%;">No</th>
+					<th>Kode</th>
 					<th>Nama</th>
 					<th>Aksi</th>
 				</tr>
@@ -27,13 +28,14 @@ if ($this->session->flashdata('add_success')) { ?>
 				foreach ($jurusan as $key) { ?>
 					<tr>
 						<td style="width: 8%;"><?= $no++ ?></td>
+						<td style="width: 8%;"><?= $key->id_jurusan ?></td>
 						<td><?= $key->nama_jurusan ?></td>
-						<td>
+						<td style="width: 20%;">
 							<a href="<?= base_url('jurusan/edit/') . $key->id_jurusan ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
 							<a href="#" class="btn btn-primary"><i class="fa-fw select-all fas"></i></a>
-							<a href="<?= base_url('jurusan/remove/') . $key->id_jurusan ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
+							<a class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('jurusan/remove/') . $key->id_jurusan ?>')"></i></a>
 						</td>
 					</tr>
 				<?php
@@ -42,3 +44,11 @@ if ($this->session->flashdata('add_success')) { ?>
 		</table>
 	</div>
 </div>
+<script>
+	function confirm_del(url) {
+		if (confirm('Yakin ingin menghapus data ini?')) {
+			window.location.href = url;
+		}
+		return false;
+	}
+</script>

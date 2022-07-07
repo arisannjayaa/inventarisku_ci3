@@ -5,10 +5,17 @@
 				<div class="form-body">
 					<div class="row">
 						<div class="col-md-4">
+							<label>Kode Jurusan</label>
+						</div>
+						<div class="col-md-8 form-group">
+							<input type="text" class="form-control" name="id" placeholder="Kode Jurusan">
+							<small class="text-danger"><?= form_error('nama') ?></small>
+						</div>
+						<div class="col-md-4">
 							<label>Nama Jurusan</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="text" class="form-control" name="nama" placeholder="Nama Barang">
+							<input type="text" class="form-control" name="nama" placeholder="Nama Jurusan">
 							<small class="text-danger"><?= form_error('nama') ?></small>
 						</div>
 						<div class="col-sm-12 d-flex justify-content-end">

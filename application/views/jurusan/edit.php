@@ -2,9 +2,16 @@
 	<div class="card-content">
 		<div class="card-body">
 			<?php foreach ($jurusan as $key) { ?>
-				<form class="form form-horizontal" method="post" action="<?= base_url('jurusan/edit_process/') . $key->id_jurusan ?>">
+				<form class="form form-horizontal" method="post" action="<?= base_url('jurusan/edit_proses/') . $key->id_jurusan ?>">
 					<div class="form-body">
 						<div class="row">
+							<div class="col-md-4">
+								<label>Kode Jurusan</label>
+							</div>
+							<div class="col-md-8 form-group">
+								<input type="text" class="form-control" name="id" placeholder="Nama Barang" value="<?= $key->id_jurusan ?>" readonly>
+								<small class="text-danger"><?= form_error('id') ?></small>
+							</div>
 							<div class="col-md-4">
 								<label>Nama Jurusan</label>
 							</div>

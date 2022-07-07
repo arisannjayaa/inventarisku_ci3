@@ -10,6 +10,18 @@ class Dashboard extends CI_Controller
 	}
 	public function index()
 	{
+		if ($this->session->userdata('login') == true) {
+			$data = [
+				'heading' 		=> 'Dashboard',
+				'title'			=> 'Dashboard | InventarisKu'
+			];
+
+			$this->load->view('template/header', $data);
+			$this->load->view('dashboard/index');
+			$this->load->view('template/footer');
+		} else {
+			redirect(base_url('login'));
+		}
 	}
 }
 

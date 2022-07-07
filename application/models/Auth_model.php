@@ -3,34 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth_model extends CI_Model
 {
-	public function cek_login()
+	public function get_user()
 	{
+		$query = $this->db->query('select * from tb_user');
+		return $query;
 	}
 
-	public function rules()
+	public function validate_user($user)
 	{
-		return [
-			[
-				'field' => 'username',
-				'label' => 'Username or Email',
-				'rules' => 'required'
-			],
-			[
-				'field' => 'password',
-				'label' => 'Password',
-				'rules' => 'required|max_length[255]'
-			]
-		];
-	}
-
-	public function getUser()
-	{
-		$query = $this->db->get('tb_user');
-		if ($query->nums_row() > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		$query = $this->db->query("select * from tb_user where username='$user'");
 	}
 }
 

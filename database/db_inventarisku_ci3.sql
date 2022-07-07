@@ -29,13 +29,13 @@ create table tb_barang(
 );
 
 create table tb_jurusan(
-	id_jurusan int primary key auto_increment,
+	id_jurusan char(2) primary key,
 	nama_jurusan varchar(100)
 );
 
 create table tb_prodi(
-	id_prodi int primary key auto_increment,
-	id_jurusan int,
+	id_prodi char(4) primary key,
+	id_jurusan char(2),
 	nama_prodi varchar(100),
 	foreign key (id_jurusan) references tb_jurusan(id_jurusan)
 );
@@ -54,3 +54,12 @@ create table tb_transaksi(
 	status_bayar,
 	status_pengembalian
 );
+
+insert into tb_jurusan values
+('TE', 'Teknik Elektro'),
+('TM','Teknik Mesin'),
+('TS','Teknik Sipil'),
+('AN','Administrasi Niaga'),
+('AK','Akuntansi');
+
+

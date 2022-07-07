@@ -2,7 +2,7 @@
 	<div class="card-content">
 		<div class="card-body">
 			<?php foreach ($barang as $key) { ?>
-				<form class="form form-horizontal" method="post" action="<?= base_url('barang/edit_prosess/') . $key->id_barang ?>">
+				<form class="form form-horizontal" method="post" action="<?= base_url('barang/edit_proses/') . $key->id_barang ?>">
 					<div class="form-body">
 						<div class="row">
 							<input type="hidden" class="form-control" name="id" placeholder="Id Barang" value="<?= $key->id_barang ?>">

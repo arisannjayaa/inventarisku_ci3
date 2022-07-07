@@ -7,9 +7,14 @@ class Jurusan_model extends CI_Model
 	{
 		return [
 			[
-				'field' => 'nama',
+				'field' => 'id',
 				'label'	=> 'Nama',
-				'rules' => 'required|max_length[50]'
+				'rules' => 'required|max_length[2]'
+			],
+			[
+				'field' => 'jurusan',
+				'label'	=> 'Nama',
+				'rules' => 'required|max_length[2]'
 			],
 		];
 	}
@@ -23,6 +28,7 @@ class Jurusan_model extends CI_Model
 	public function insert()
 	{
 		$insert = array(
+			'id_jurusan' => $this->input->post('id'),
 			'nama_jurusan' => $this->input->post('nama')
 		);
 		$result = $this->db->insert('tb_jurusan', $insert);
@@ -32,7 +38,7 @@ class Jurusan_model extends CI_Model
 	public function update()
 	{
 		$edit = array(
-			'nama_jurusan' => $this->input->post('nama'),
+			'nama_jurusan' => $this->input->post('nama')
 		);
 		$this->db->where('id_jurusan', $this->input->post('id'));
 		$result = $this->db->update('tb_jurusan', $edit);

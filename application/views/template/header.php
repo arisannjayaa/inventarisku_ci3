@@ -5,15 +5,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title><?= $title ?></title>
+	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/form-element-select.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/dist/assets/css/main/app.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/dist/assets/css/main/app-dark.css">
 
-	<link rel="stylesheet" href="<?= base_url('') ?>/public/dist/assets/css/main/app.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>/public/dist/assets/css/main/app-dark.css">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/dist/assets/images/logo/favicon.svg" type="image/x-icon">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/dist/assets/images/logo/favicon.png" type="image/png">
 
-	<link rel="shortcut icon" href="<?= base_url('') ?>/public/dist/assets/images/logo/favicon.svg" type="image/x-icon">
-	<link rel="shortcut icon" href="<?= base_url('') ?>/public/dist/assets/images/logo/favicon.png" type="image/png">
-
-	<link rel="stylesheet" href="<?= base_url('') ?>/public/dist/assets/css/pages/datatables.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>/public/dist/assets/css/pages/fontawesome.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/dist/assets/css/pages/datatables.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/dist/assets/css/pages/fontawesome.css">
 </head>
 
 <body>
@@ -53,41 +53,41 @@
 					<ul class="menu">
 						<li class="sidebar-title">Menu</li>
 
-						<li class="sidebar-item  ">
-							<a href="#" class='sidebar-link'>
+						<li class="sidebar-item">
+							<a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Dashboard</span>
 							</a>
 						</li>
-						<li class="sidebar-item has-sub">
+						<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-stack"></i>
 								<span>Master Data</span>
 							</a>
-							<ul class="submenu">
-								<li class="submenu-item ">
+							<ul class="submenu <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
+								<li class="submenu-item <?= ($submenu_item == 'Data Barang') ? 'active' : ''; ?>">
 									<a href="<?= base_url('barang') ?>">Data Barang</a>
 								</li>
-								<li class="submenu-item ">
+								<li class="submenu-item <?= ($submenu_item == 'Data Jurusan') ? 'active' : ''; ?>">
 									<a href="<?= base_url('jurusan') ?>">Data Jurusan</a>
 								</li>
-								<li class="submenu-item ">
+								<li class="submenu-item <?= ($submenu_item == 'Data Prodi') ? 'active' : ''; ?>">
 									<a href="<?= base_url('prodi') ?>">Data Prodi</a>
 								</li>
-								<li class="submenu-item ">
+								<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
 									<a href="<?= base_url('users') ?>">Data Users</a>
 								</li>
 							</ul>
 						</li>
 
-						<li class="sidebar-item">
-							<a href="#" class='sidebar-link'>
+						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
+							<a href="<?= base_url('orders') ?>" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Orders</span>
 							</a>
 						</li>
 
-						<li class="sidebar-item ">
+						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Transaksi</span>

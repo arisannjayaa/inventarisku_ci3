@@ -15,20 +15,25 @@ class Barang extends CI_Controller
 			'heading' 		=> 'Master Data Barang',
 			'title'			=> 'Master Data Barang | InventarisKu',
 			'card_header'	=> 'List Data Barang',
-			'barang'		=> $this->Barang_model->get_all(),
-			'active'		=> 'active'
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Barang',
+			'sidebar_item'	=> '',
+			'barang'		=> $this->Barang_model->get_all()
 		];
 
 		$this->load->view('template/header', $data);
 		$this->load->view('barang/detail', $data);
-		$this->load->view('template/footer', $data);
+		$this->load->view('template/footer');
 	}
 
 	public function add()
 	{
 		$data = [
 			'heading' 		=> 'Tambah Data Barang',
-			'title'			=> 'Tambah Data Barang | InventarisKu'
+			'title'			=> 'Tambah Data Barang | InventarisKu',
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Barang',
+			'sidebar_item'	=> ''
 		];
 
 		$this->load->view('template/header', $data);
@@ -36,7 +41,7 @@ class Barang extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-	public function add_prosess()
+	public function add_proses()
 	{
 		$rules = $this->Barang_model->rules();
 		$this->form_validation->set_rules($rules);
@@ -44,7 +49,10 @@ class Barang extends CI_Controller
 			$data = [
 				'heading' 		=> 'Tambah Data Barang',
 				'title'			=> 'Master Data Barang | InventarisKu',
-				'card_header'	=> 'List Data Barang'
+				'card_header'	=> 'List Data Barang',
+				'side_menu'		=> 'Master Data',
+				'submenu_item'	=> 'Data Barang',
+				'sidebar_item'	=> ''
 			];
 
 			$this->load->view('template/header', $data);
@@ -62,6 +70,9 @@ class Barang extends CI_Controller
 		$data = [
 			'heading' 		=> 'Edit Data Barang',
 			'title'			=> 'Edit Data Barang | InventarisKu',
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Barang',
+			'sidebar_item'	=> '',
 			'barang'		=> $this->Barang_model->get_details($id)
 		];
 
@@ -70,7 +81,7 @@ class Barang extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-	public function edit_prosess($id)
+	public function edit_proses($id)
 	{
 		$rules = $this->Barang_model->rules();
 		$this->form_validation->set_rules($rules);
@@ -78,6 +89,9 @@ class Barang extends CI_Controller
 			$data = [
 				'heading' 		=> 'Edit Data Barang',
 				'title'			=> 'Edit Data Barang | InventarisKu',
+				'side_menu'		=> 'Master Data',
+				'submenu_item'	=> 'Data Barang',
+				'sidebar_item'	=> '',
 				'barang'		=> $this->Barang_model->get_details($id)
 			];
 			$this->load->view('template/header', $data);

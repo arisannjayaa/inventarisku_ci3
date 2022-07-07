@@ -7,63 +7,62 @@ class Prodi_model extends CI_Model
 	{
 		return [
 			[
-				'field' => 'nama',
+				'field' => 'id',
 				'label'	=> 'Nama',
-				'rules' => 'required|max_length[50]'
+				'rules' => 'required|max_length[4]'
 			],
 			[
-				'field' => 'stok',
-				'label'	=> 'Stok',
-				'rules' => 'required|integer'
+				'field' => 'prodi',
+				'label'	=> 'Nama',
+				'rules' => 'required|max_length[100]'
 			],
 			[
-				'field' => 'harga',
-				'label'	=> 'Harga',
-				'rules' => 'required|integer'
+				'field' => 'jurusan',
+				'label'	=> 'Nama',
+				'rules' => 'required|max_length[4]'
 			],
 		];
 	}
 
 	public function get_all()
 	{
-		$query = $this->db->get('tb_barang')->result();
+		$query = $this->db->get('tb_prodi')->result();
 		return $query;
 	}
 
 	public function insert()
 	{
 		$insert = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('stok'),
-			'harga_barang' => $this->input->post('harga')
+			'id_prodi'	 => $this->input->post('id'),
+			'nama_prodi' => $this->input->post('prodi'),
+			'id_jurusan' => $this->input->post('jurusan')
 		);
-		$result = $this->db->insert('tb_barang', $insert);
+		$result = $this->db->insert('tb_prodi', $insert);
 		return $result;
 	}
 
 	public function update()
 	{
 		$edit = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('qty'),
-			'harga_barang' => $this->input->post('harga')
+			'id_jurusan' => $this->input->post('jurusan'),
+			'nama_prodi' => $this->input->post('prodi')
 		);
-		$this->db->where('id_barang', $this->input->post('id'));
-		$result = $this->db->update('tb_barang', $edit);
+		$this->db->where('id_prodi', $this->input->post('id'));
+		$result = $this->db->update('tb_prodi', $edit);
 		return $result;
 	}
 
 	public function get_details($id)
 	{
-		$this->db->where('id_barang', $id);
-		$result = $this->db->get('tb_barang')->result();
+		$this->db->where('id_prodi', $id);
+		$result = $this->db->get('tb_prodi')->result();
 		return $result;
 	}
 
 	public function delete($id)
 	{
-		$this->db->where('id_barang', $id);
-		$result = $this->db->delete('tb_barang');
+		$this->db->where('id_prodi', $id);
+		$result = $this->db->delete('tb_prodi');
 		return $result;
 	}
 }

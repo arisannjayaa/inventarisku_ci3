@@ -32,12 +32,12 @@ if ($this->session->flashdata('add_success')) { ?>
 						<td><?= $key->nama_barang ?></td>
 						<td><?= $key->stok_barang ?></td>
 						<td><?= $key->harga_barang ?></td>
-						<td>
+						<td style="width: 20%;">
 							<a href="<?= base_url('barang/edit/') . $key->id_barang ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
 							<a href="#" class="btn btn-primary"><i class="fa-fw select-all fas"></i></a>
-							<a href="<?= base_url('barang/remove/') . $key->id_barang ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
+							<a class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_barang ?>')"></i></a>
 						</td>
 					</tr>
 				<?php
@@ -46,3 +46,11 @@ if ($this->session->flashdata('add_success')) { ?>
 		</table>
 	</div>
 </div>
+<script>
+	function confirm_del(url) {
+		if (confirm('Yakin ingin menghapus data ini?')) {
+			window.location.href = url;
+		}
+		return false;
+	}
+</script>

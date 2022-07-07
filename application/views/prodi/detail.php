@@ -10,13 +10,15 @@ if ($this->session->flashdata('add_success')) { ?>
 <div class="card">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
-		<a href="<?= base_url('jurusan/add') ?>" class="btn btn-primary">Tambah</a>
+		<a href="<?= base_url('prodi/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
 	<div class="card-body">
 		<table class="table" id="table1">
 			<thead>
 				<tr>
 					<th style="width: 8%;">No</th>
+					<th style="width: 8%;">KP</th>
+					<th style="width: 8%;">KJ</th>
 					<th>Nama</th>
 					<th>Aksi</th>
 				</tr>
@@ -24,16 +26,18 @@ if ($this->session->flashdata('add_success')) { ?>
 			<tbody>
 				<?php
 				$no = 1;
-				foreach ($jurusan as $key) { ?>
+				foreach ($prodi as $key) { ?>
 					<tr>
 						<td style="width: 8%;"><?= $no++ ?></td>
-						<td><?= $key->nama_jurusan ?></td>
-						<td>
-							<a href="<?= base_url('jurusan/edit/') . $key->id_jurusan ?>" class="btn btn-warning">
+						<td><?= $key->id_prodi ?></td>
+						<td><?= $key->id_jurusan ?></td>
+						<td><?= $key->nama_prodi ?></td>
+						<td style="width: 20%;">
+							<a href="<?= base_url('prodi/edit/') . $key->id_prodi ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
 							<a href="#" class="btn btn-primary"><i class="fa-fw select-all fas"></i></a>
-							<a href="<?= base_url('jurusan/remove/') . $key->id_jurusan ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
+							<a href="<?= base_url('prodi/remove/') . $key->id_prodi ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
 						</td>
 					</tr>
 				<?php

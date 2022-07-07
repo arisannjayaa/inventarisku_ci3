@@ -15,24 +15,30 @@ class Jurusan extends CI_Controller
 			'heading' 		=> 'Master Data Jurusan',
 			'title'			=> 'Master Data Jurusan | InventarisKu',
 			'card_header'	=> 'List Data Jurusan',
-			'jurusan'			=> $this->Jurusan_model->get_all()
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Jurusan',
+			'sidebar_item'	=> '',
+			'jurusan'		=> $this->Jurusan_model->get_all()
 		];
 
 		$this->load->view('template/header', $data);
 		$this->load->view('jurusan/detail', $data);
-		$this->load->view('template/footer', $data);
+		$this->load->view('template/footer');
 	}
 
 	public function add()
 	{
 		$data = [
 			'heading' 		=> 'Tambah Data Jurusan',
-			'title'			=> 'Tambah Data Jurusan | InventarisKu'
+			'title'			=> 'Tambah Data Jurusan | InventarisKu',
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Jurusan',
+			'sidebar_item'	=> ''
 		];
 
 		$this->load->view('template/header', $data);
 		$this->load->view('jurusan/tambah', $data);
-		$this->load->view('template/footer', $data);
+		$this->load->view('template/footer');
 	}
 
 	public function add_prosess()
@@ -43,12 +49,15 @@ class Jurusan extends CI_Controller
 			$data = [
 				'heading' 		=> 'Tambah Data Jurusan',
 				'title'			=> 'Master Data Jurusan | InventarisKu',
-				'card_header'	=> 'List Data Jurusan'
+				'card_header'	=> 'List Data Jurusan',
+				'side_menu'		=> 'Master Data',
+				'submenu_item'	=> 'Data Jurusan',
+				'sidebar_item'	=> ''
 			];
 
 			$this->load->view('template/header', $data);
 			$this->load->view('jurusan/tambah');
-			$this->load->view('template/footer', $data);
+			$this->load->view('template/footer');
 		} else {
 			$this->Jurusan_model->insert();
 			$this->session->set_flashdata('add_success', 'Data berhasil ditambahkan');
@@ -61,27 +70,30 @@ class Jurusan extends CI_Controller
 		$data = [
 			'heading' 		=> 'Edit Data Jurusan',
 			'title'			=> 'Edit Data Jurusan | InventarisKu',
+			'side_menu'		=> 'Master Data',
+			'submenu_item'	=> 'Data Jurusan',
+			'sidebar_item'	=> '',
 			'jurusan'		=> $this->Jurusan_model->get_details($id)
 		];
 
 		$this->load->view('template/header', $data);
 		$this->load->view('jurusan/edit', $data);
-		$this->load->view('template/footer', $data);
+		$this->load->view('template/footer');
 	}
 
-	public function edit_prosess($id)
+	public function edit_proses($id)
 	{
 		$rules = $this->Jurusan_model->rules();
 		$this->form_validation->set_rules($rules);
 		if ($this->form_validation->run() == FALSE) {
 			$data = [
-				'heading' 		=> 'Edit Data Jurusan',
-				'title'			=> 'Edit Data Jurusan | InventarisKu',
-				'jurusan'		=> $this->Jurusan_model->get_details($id)
+				'heading' 		=> 'Edit Data Barang',
+				'title'			=> 'Edit Data Barang | InventarisKu',
+				'barang'		=> $this->Jurusan_model->get_details($id)
 			];
 			$this->load->view('template/header', $data);
-			$this->load->view('jurusan/edit', $data);
-			$this->load->view('template/footer', $data);
+			$this->load->view('barang/edit', $data);
+			$this->load->view('template/footer');
 		} else {
 			$this->Jurusan_model->update();
 			$this->session->set_flashdata('update_success', 'Data berhasil diupdate');
