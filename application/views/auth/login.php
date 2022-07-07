@@ -15,26 +15,31 @@
 	<div id="auth">
 		<div class="row h-100 justify-content-center align-items-center" style="background-color: #F0F1FF;">
 			<div class="col-lg-3">
+				<?php if ($this->session->flashdata('gagal')) { ?>
+					<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
+				<?php } ?>
 				<div class="card" style="border: 1px solid #545BFC;">
 					<div class="card-content">
 						<div class="card-body">
-							<?php if ($this->session->flashdata('gagal')) { ?>
-								<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
-							<?php } ?>
 							<h1 class="text-center fs-4 mb-4" style="color: #333333;">Login | Inventaris<span style="color: #545BFC">Ku</span></h1>
 							<form class="form" method="post" action="<?= base_url('auth/cek_login') ?>">
 								<div class="form-body">
 									<div class="form-group">
 										<label for="username">Username</label>
-										<input type="text" id="username" class="form-control" placeholder="Username" name="user">
+										<input type="text" id="username" class="form-control" placeholder="Username" name="user" required>
 									</div>
 									<div class="form-group mb-4">
 										<label for="password">Password</label>
-										<input type="password" id="password" class="form-control" placeholder="Password" name="pass">
+										<input type="password" id="password" class="form-control" placeholder="Password" name="pass" required>
 									</div>
 								</div>
+								<div class="form-actions d-grid mb-2">
+									<button type="submit" name="login" class="btn btn-primary">Login</button>
+								</div>
+								<hr>
+								<span class="text-center d-block mb-2">Belum memiliki akun?</span>
 								<div class="form-actions d-grid">
-									<button type="submit" name="login" class="btn btn-primary me-1">Login</button>
+									<a href="<?= base_url('register') ?>" class="btn btn-outline-primary">Daftar</a>
 								</div>
 							</form>
 						</div>

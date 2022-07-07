@@ -49,6 +49,15 @@ class Auth extends CI_Controller
 		$this->session->sess_destroy();
 		redirect(base_url('login'));
 	}
+
+	public function register()
+	{
+		if ($this->session->userdata('status') != 'logged') {
+			$this->load->view('auth/register');
+		} else {
+			redirect(base_url(''));
+		}
+	}
 }
 
 /* End of file Auth.php and path \application\controllers\Auth.php */
