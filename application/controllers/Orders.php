@@ -21,7 +21,7 @@ class Orders extends CI_Controller
 		];
 
 		$this->load->view('template/header', $data);
-		$this->load->view('orders/detail');
+		$this->load->view('orders/index');
 		$this->load->view('template/footer');
 	}
 }

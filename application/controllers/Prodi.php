@@ -22,7 +22,7 @@ class Prodi extends CI_Controller
 		];
 
 		$this->load->view('template/header', $data);
-		$this->load->view('prodi/detail', $data);
+		$this->load->view('prodi/index', $data);
 		$this->load->view('template/footer', $data);
 	}
 

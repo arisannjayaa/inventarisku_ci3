@@ -8,21 +8,21 @@
 							<label>Nama Barang</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="text" class="form-control" name="nama" placeholder="Nama Barang">
+							<input type="text" class="form-control <?= (form_error('nama')) ? 'is-invalid' : '' ?>" name="nama" placeholder="Nama Barang">
 							<small class="text-danger"><?= form_error('nama') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Stok Barang</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="number" class="form-control" name="stok" placeholder="Stok Barang">
+							<input type="number" class="form-control <?= (form_error('stok')) ? 'is-invalid' : '' ?>" name="stok" placeholder="Stok Barang">
 							<small class="text-danger"><?= form_error('stok') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Harga Barang</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="number" class="form-control" name="harga" placeholder="Harga Barang">
+							<input type="number" class="form-control <?= (form_error('harga')) ? 'is-invalid' : '' ?>" name="harga" placeholder="Harga Barang">
 							<small class="text-danger"><?= form_error('harga') ?></small>
 						</div>
 						<div class="col-sm-12 d-flex justify-content-end">

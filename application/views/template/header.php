@@ -53,32 +53,43 @@
 					<ul class="menu">
 						<li class="sidebar-title">Menu</li>
 
-						<li class="sidebar-item">
+						<li class="sidebar-item <?= ($sidebar_item == 'Dashboard') ? 'active' : ''; ?>">
 							<a href="<?= base_url('dashboard') ?>" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Dashboard</span>
 							</a>
 						</li>
-						<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
-							<a href="#" class='sidebar-link'>
-								<i class="bi bi-stack"></i>
-								<span>Master Data</span>
-							</a>
-							<ul class="submenu <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
-								<li class="submenu-item <?= ($submenu_item == 'Data Barang') ? 'active' : ''; ?>">
-									<a href="<?= base_url('barang') ?>">Data Barang</a>
-								</li>
-								<li class="submenu-item <?= ($submenu_item == 'Data Jurusan') ? 'active' : ''; ?>">
-									<a href="<?= base_url('jurusan') ?>">Data Jurusan</a>
-								</li>
-								<li class="submenu-item <?= ($submenu_item == 'Data Prodi') ? 'active' : ''; ?>">
-									<a href="<?= base_url('prodi') ?>">Data Prodi</a>
-								</li>
-								<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
-									<a href="<?= base_url('users') ?>">Data Users</a>
-								</li>
-							</ul>
-						</li>
+						<?php if ($this->session->userdata('level') == 'admin') { ?>
+							<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
+								<a href="#" class='sidebar-link'>
+									<i class="bi bi-stack"></i>
+									<span>Master Data</span>
+								</a>
+								<ul class="submenu <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
+									<li class="submenu-item <?= ($submenu_item == 'Data Barang') ? 'active' : ''; ?>">
+										<a href="<?= base_url('barang') ?>">Data Barang</a>
+									</li>
+									<li class="submenu-item <?= ($submenu_item == 'Data Jurusan') ? 'active' : ''; ?>">
+										<a href="<?= base_url('jurusan') ?>">Data Jurusan</a>
+									</li>
+									<li class="submenu-item <?= ($submenu_item == 'Data Prodi') ? 'active' : ''; ?>">
+										<a href="<?= base_url('prodi') ?>">Data Prodi</a>
+									</li>
+									<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
+										<a href="<?= base_url('users') ?>">Data Users</a>
+									</li>
+								</ul>
+							</li>
+						<?php } ?>
+
+						<?php if ($this->session->userdata('level') == 'mahasiswa') { ?>
+							<li class="sidebar-item <?= ($sidebar_item == 'Data Belanja') ? 'active' : ''; ?>">
+								<a href="<?= base_url('belanja') ?>" class='sidebar-link'>
+									<i class="bi bi-bag-heart-fill"></i>
+									<span>Belanja</span>
+								</a>
+							</li>
+						<?php } ?>
 
 						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
 							<a href="<?= base_url('orders') ?>" class='sidebar-link'>
@@ -113,8 +124,8 @@
 								<a href="#" data-bs-toggle="dropdown" aria-expanded="false">
 									<div class="user-menu d-flex">
 										<div class="user-name text-end me-3">
-											<h6 class="mb-0 text-gray-600">Admin</h6>
-											<p class="mb-0 text-sm text-gray-600">Administrator</p>
+											<h6 class="mb-0 text-gray-600"><?= ucfirst($this->session->userdata('username')) ?></h6>
+											<p class="mb-0 text-sm text-gray-600"><?= ucfirst($this->session->userdata('level')) ?></p>
 										</div>
 										<div class="user-img d-flex align-items-center">
 											<div class="avatar avatar-md">
@@ -125,14 +136,14 @@
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
 									<li>
-										<h6 class="dropdown-header">Hello, John!</h6>
+										<h6 class="dropdown-header">Hello, <?= ucfirst($this->session->userdata('username')) ?></h6>
 									</li>
 									<li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
 											Profile</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+									<li><a class="dropdown-item" href="<?= base_url('auth/logout') ?>"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Keluar</a></li>
 								</ul>
 							</div>
 						</div>

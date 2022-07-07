@@ -10,10 +10,13 @@ class Dashboard extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->session->userdata('login') == true) {
+		if ($this->session->userdata('status') == 'logged') {
 			$data = [
 				'heading' 		=> 'Dashboard',
-				'title'			=> 'Dashboard | InventarisKu'
+				'title'			=> 'Dashboard | InventarisKu',
+				'side_menu'		=> '',
+				'submenu_item'	=> '',
+				'sidebar_item'	=> 'Dashboard',
 			];
 
 			$this->load->view('template/header', $data);

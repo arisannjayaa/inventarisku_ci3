@@ -18,15 +18,15 @@
 				<div class="card" style="border: 1px solid #545BFC;">
 					<div class="card-content">
 						<div class="card-body">
-							<?php if ($this->session->flashdata('add_success')) { ?>
-								<div class="alert alert-success"><?= $this->session->flashdata('error'); ?></div>
+							<?php if ($this->session->flashdata('gagal')) { ?>
+								<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
 							<?php } ?>
 							<h1 class="text-center fs-4 mb-4" style="color: #333333;">Login | Inventaris<span style="color: #545BFC">Ku</span></h1>
 							<form class="form" method="post" action="<?= base_url('auth/cek_login') ?>">
 								<div class="form-body">
 									<div class="form-group">
 										<label for="username">Username</label>
-										<input type="text" id="username" class="form-control" placeholder="Name" name="user">
+										<input type="text" id="username" class="form-control" placeholder="Username" name="user">
 									</div>
 									<div class="form-group mb-4">
 										<label for="password">Password</label>
@@ -34,7 +34,7 @@
 									</div>
 								</div>
 								<div class="form-actions d-grid">
-									<button type="submit" class="btn btn-primary me-1">Login</button>
+									<button type="submit" name="login" class="btn btn-primary me-1">Login</button>
 								</div>
 							</form>
 						</div>

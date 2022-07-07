@@ -9,106 +9,161 @@ class Barang extends CI_Controller
 		parent::__construct();
 		$this->load->model('Barang_model');
 	}
+
 	public function index()
 	{
-		$data = [
-			'heading' 		=> 'Master Data Barang',
-			'title'			=> 'Master Data Barang | InventarisKu',
-			'card_header'	=> 'List Data Barang',
-			'side_menu'		=> 'Master Data',
-			'submenu_item'	=> 'Data Barang',
-			'sidebar_item'	=> '',
-			'barang'		=> $this->Barang_model->get_all()
-		];
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$data = [
+					'heading' 		=> 'Master Data Barang',
+					'title'			=> 'Master Data Barang | InventarisKu',
+					'card_header'	=> 'List Data Barang',
+					'side_menu'		=> 'Master Data',
+					'submenu_item'	=> 'Data Barang',
+					'sidebar_item'	=> '',
+					'barang'		=> $this->Barang_model->get_all()
+				];
 
-		$this->load->view('template/header', $data);
-		$this->load->view('barang/detail', $data);
-		$this->load->view('template/footer');
+				$this->load->view('template/header', $data);
+				$this->load->view('barang/index', $data);
+				$this->load->view('template/footer');
+			} else {
+				redirect(base_url(''));
+			}
+		} else {
+			redirect(base_url('login'));
+		}
 	}
 
 	public function add()
 	{
-		$data = [
-			'heading' 		=> 'Tambah Data Barang',
-			'title'			=> 'Tambah Data Barang | InventarisKu',
-			'side_menu'		=> 'Master Data',
-			'submenu_item'	=> 'Data Barang',
-			'sidebar_item'	=> ''
-		];
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$$data = [
+					'heading' 		=> 'Tambah Data Barang',
+					'title'			=> 'Tambah Data Barang | InventarisKu',
+					'side_menu'		=> 'Master Data',
+					'submenu_item'	=> 'Data Barang',
+					'sidebar_item'	=> ''
+				];
 
-		$this->load->view('template/header', $data);
-		$this->load->view('barang/tambah', $data);
-		$this->load->view('template/footer', $data);
+				$this->load->view('template/header', $data);
+				$this->load->view('barang/tambah', $data);
+				$this->load->view('template/footer', $data);
+			} else {
+				redirect(base_url(''));
+			}
+		} else {
+			redirect(base_url('login'));
+		}
 	}
 
 	public function add_proses()
 	{
-		$rules = $this->Barang_model->rules();
-		$this->form_validation->set_rules($rules);
-		if ($this->form_validation->run() == FALSE) {
-			$data = [
-				'heading' 		=> 'Tambah Data Barang',
-				'title'			=> 'Master Data Barang | InventarisKu',
-				'card_header'	=> 'List Data Barang',
-				'side_menu'		=> 'Master Data',
-				'submenu_item'	=> 'Data Barang',
-				'sidebar_item'	=> ''
-			];
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$rules = $this->Barang_model->rules();
+				$this->form_validation->set_rules($rules);
+				if ($this->form_validation->run() == FALSE) {
+					$data = [
+						'heading' 		=> 'Tambah Data Barang',
+						'title'			=> 'Master Data Barang | InventarisKu',
+						'card_header'	=> 'List Data Barang',
+						'side_menu'		=> 'Master Data',
+						'submenu_item'	=> 'Data Barang',
+						'sidebar_item'	=> ''
+					];
 
-			$this->load->view('template/header', $data);
-			$this->load->view('barang/tambah');
-			$this->load->view('template/footer', $data);
+					$this->load->view('template/header', $data);
+					$this->load->view('barang/tambah');
+					$this->load->view('template/footer', $data);
+				} else {
+					$this->Barang_model->insert();
+					$this->session->set_flashdata('add_success', 'Data berhasil ditambahkan');
+					redirect('barang');
+				}
+			} else {
+				redirect(base_url(''));
+			}
 		} else {
-			$this->Barang_model->insert();
-			$this->session->set_flashdata('add_success', 'Data berhasil ditambahkan');
-			redirect('barang');
+			redirect(base_url('login'));
 		}
 	}
 
 	public function edit($id)
 	{
-		$data = [
-			'heading' 		=> 'Edit Data Barang',
-			'title'			=> 'Edit Data Barang | InventarisKu',
-			'side_menu'		=> 'Master Data',
-			'submenu_item'	=> 'Data Barang',
-			'sidebar_item'	=> '',
-			'barang'		=> $this->Barang_model->get_details($id)
-		];
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$data = [
+					'heading' 		=> 'Edit Data Barang',
+					'title'			=> 'Edit Data Barang | InventarisKu',
+					'side_menu'		=> 'Master Data',
+					'submenu_item'	=> 'Data Barang',
+					'sidebar_item'	=> '',
+					'barang'		=> $this->Barang_model->get_details($id)
+				];
 
-		$this->load->view('template/header', $data);
-		$this->load->view('barang/edit', $data);
-		$this->load->view('template/footer', $data);
-	}
-
-	public function edit_proses($id)
-	{
-		$rules = $this->Barang_model->rules();
-		$this->form_validation->set_rules($rules);
-		if ($this->form_validation->run() == FALSE) {
-			$data = [
-				'heading' 		=> 'Edit Data Barang',
-				'title'			=> 'Edit Data Barang | InventarisKu',
-				'side_menu'		=> 'Master Data',
-				'submenu_item'	=> 'Data Barang',
-				'sidebar_item'	=> '',
-				'barang'		=> $this->Barang_model->get_details($id)
-			];
-			$this->load->view('template/header', $data);
-			$this->load->view('barang/edit', $data);
-			$this->load->view('template/footer', $data);
+				$this->load->view('template/header', $data);
+				$this->load->view('barang/edit', $data);
+				$this->load->view('template/footer', $data);
+			} else {
+				redirect(base_url(''));
+			}
 		} else {
-			$this->Barang_model->update();
-			$this->session->set_flashdata('update_success', 'Data berhasil diupdate');
-			redirect('barang');
+			redirect(base_url('login'));
 		}
 	}
 
-	public function remove($id)
+	public function edit_proses($id = null)
 	{
-		$this->Barang_model->delete($id);
-		$this->session->set_flashdata('delete_success', 'Data berhasil dihapus');
-		redirect('barang');
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$rules = $this->Barang_model->rules();
+				$this->form_validation->set_rules($rules);
+				if ($this->form_validation->run() == FALSE) {
+					$data = [
+						'heading' 		=> 'Edit Data Barang',
+						'title'			=> 'Edit Data Barang | InventarisKu',
+						'side_menu'		=> 'Master Data',
+						'submenu_item'	=> 'Data Barang',
+						'sidebar_item'	=> '',
+						'barang'		=> $this->Barang_model->get_details($id)
+					];
+					$this->load->view('template/header', $data);
+					$this->load->view('barang/edit', $data);
+					$this->load->view('template/footer', $data);
+				} else {
+					$this->Barang_model->update();
+					$this->session->set_flashdata('update_success', 'Data berhasil diupdate');
+					redirect('barang');
+				}
+			} else {
+				redirect(base_url(''));
+			}
+		} else {
+			redirect(base_url('login'));
+		}
+	}
+
+	public function remove($id = null)
+	{
+		$sesi = $this->session->userdata();
+		if ($sesi['status'] == 'logged') {
+			if ($sesi['level'] == 'admin') {
+				$this->Barang_model->delete($id);
+				$this->session->set_flashdata('delete_success', 'Data berhasil dihapus');
+				redirect('barang');
+			} else {
+				redirect(base_url(''));
+			}
+		} else {
+			redirect(base_url('login'));
+		}
 	}
 }
 
