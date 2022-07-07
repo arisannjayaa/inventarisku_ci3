@@ -23,7 +23,7 @@
 				<div class="sidebar-header position-relative">
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="fs-5">
-							<a href="#">InventarisKu</a>
+							<a href="<?= base_url('') ?>">InventarisKu</a>
 						</div>
 						<div class="theme-toggle d-flex gap-2  align-items-center">
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
@@ -95,6 +95,7 @@
 							<a href="<?= base_url('orders') ?>" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Orders</span>
+								<span class="badge bg-warning ms-auto">0</span>
 							</a>
 						</li>
 
@@ -102,6 +103,7 @@
 							<a href="#" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
 								<span>Transaksi</span>
+								<span class="badge bg-warning ms-auto">0</span>
 							</a>
 						</li>
 					</ul>
@@ -155,8 +157,13 @@
 				<div class="page-heading">
 					<div class="page-title">
 						<div class="row">
-							<div class="col-12 col-md-6 order-md-1 order-last mb-3">
-								<h3><?= $heading ?></h3>
+							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
+								<div class="card">
+									<div class="card-body">
+										<h5><?= $heading ?></h5>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>

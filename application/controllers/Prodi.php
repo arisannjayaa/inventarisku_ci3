@@ -13,7 +13,7 @@ class Prodi extends CI_Controller
 	{
 		$data = [
 			'heading' 		=> 'Master Data Prodi',
-			'title'			=> 'Master Data Prodi | InventarisKu',
+			'title'			=> 'Master Data Prodi',
 			'card_header'	=> 'List Data Prodi',
 			'side_menu'		=> 'Master Data',
 			'submenu_item'	=> 'Data Prodi',
@@ -31,7 +31,7 @@ class Prodi extends CI_Controller
 		$this->load->model('Jurusan_model');
 		$data = [
 			'heading' 		=> 'Tambah Data Prodi',
-			'title'			=> 'Tambah Data Prodi | InventarisKu',
+			'title'			=> 'Tambah Data Prodi',
 			'side_menu'		=> 'Master Data',
 			'submenu_item'	=> 'Data Prodi',
 			'sidebar_item'	=> '',
@@ -50,7 +50,7 @@ class Prodi extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data = [
 				'heading' 		=> 'Tambah Data Prodi',
-				'title'			=> 'Master Data Prodi | InventarisKu',
+				'title'			=> 'Master Data Prodi',
 				'card_header'	=> 'List Data Prodi',
 				'side_menu'		=> 'Master Data',
 				'submenu_item'	=> 'Data Prodi',
@@ -72,7 +72,7 @@ class Prodi extends CI_Controller
 		$this->load->model('Jurusan_model');
 		$data = [
 			'heading' 		=> 'Edit Data Prodi',
-			'title'			=> 'Edit Data Prodi | InventarisKu',
+			'title'			=> 'Edit Data Prodi',
 			'side_menu'		=> 'Master Data',
 			'submenu_item'	=> 'Data Prodi',
 			'sidebar_item'	=> '',
@@ -92,7 +92,7 @@ class Prodi extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data = [
 				'heading' 		=> 'Edit Data Barang',
-				'title'			=> 'Edit Data Barang | InventarisKu',
+				'title'			=> 'Edit Data Barang',
 				'side_menu'		=> 'Master Data',
 				'submenu_item'	=> 'Data Prodi',
 				'sidebar_item'	=> '',

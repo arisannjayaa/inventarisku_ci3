@@ -12,7 +12,7 @@ if ($this->session->flashdata('add_success')) { ?>
 		<span><?= $card_header ?></span>
 		<a href="<?= base_url('jurusan/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
-	<div class="card-body">
+	<div class="card-body table-responsive">
 		<table class="table" id="table1">
 			<thead>
 				<tr>

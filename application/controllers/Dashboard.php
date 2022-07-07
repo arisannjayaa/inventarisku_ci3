@@ -13,7 +13,7 @@ class Dashboard extends CI_Controller
 		if ($this->session->userdata('status') == 'logged') {
 			$data = [
 				'heading' 		=> 'Dashboard',
-				'title'			=> 'Dashboard | InventarisKu',
+				'title'			=> 'Dashboard',
 				'side_menu'		=> '',
 				'submenu_item'	=> '',
 				'sidebar_item'	=> 'Dashboard',

@@ -17,7 +17,7 @@ class Barang extends CI_Controller
 			if ($sesi['level'] == 'admin') {
 				$data = [
 					'heading' 		=> 'Master Data Barang',
-					'title'			=> 'Master Data Barang | InventarisKu',
+					'title'			=> 'Master Data Barang',
 					'card_header'	=> 'List Data Barang',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Barang',
@@ -41,9 +41,9 @@ class Barang extends CI_Controller
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
-				$$data = [
+				$data = [
 					'heading' 		=> 'Tambah Data Barang',
-					'title'			=> 'Tambah Data Barang | InventarisKu',
+					'title'			=> 'Tambah Data Barang',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Barang',
 					'sidebar_item'	=> ''
@@ -70,7 +70,7 @@ class Barang extends CI_Controller
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
 						'heading' 		=> 'Tambah Data Barang',
-						'title'			=> 'Master Data Barang | InventarisKu',
+						'title'			=> 'Master Data Barang',
 						'card_header'	=> 'List Data Barang',
 						'side_menu'		=> 'Master Data',
 						'submenu_item'	=> 'Data Barang',
@@ -100,7 +100,7 @@ class Barang extends CI_Controller
 			if ($sesi['level'] == 'admin') {
 				$data = [
 					'heading' 		=> 'Edit Data Barang',
-					'title'			=> 'Edit Data Barang | InventarisKu',
+					'title'			=> 'Edit Data Barang',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Barang',
 					'sidebar_item'	=> '',
@@ -128,7 +128,7 @@ class Barang extends CI_Controller
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
 						'heading' 		=> 'Edit Data Barang',
-						'title'			=> 'Edit Data Barang | InventarisKu',
+						'title'			=> 'Edit Data Barang',
 						'side_menu'		=> 'Master Data',
 						'submenu_item'	=> 'Data Barang',
 						'sidebar_item'	=> '',

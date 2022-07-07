@@ -13,7 +13,7 @@ class Orders extends CI_Controller
 	{
 		$data = [
 			'heading' 		=> 'Master Data Orders',
-			'title'			=> 'Master Data Orders | InventarisKu',
+			'title'			=> 'Master Data Orders',
 			'card_header'	=> 'List Data Orders',
 			'side_menu'		=> '',
 			'sidebar_item'	=> 'Data Orders',

@@ -16,7 +16,7 @@ class Jurusan extends CI_Controller
 			if ($sesi['level'] == 'admin') {
 				$data = [
 					'heading' 		=> 'Master Data Jurusan',
-					'title'			=> 'Master Data Jurusan | InventarisKu',
+					'title'			=> 'Master Data Jurusan',
 					'card_header'	=> 'List Data Jurusan',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Jurusan',
@@ -42,7 +42,7 @@ class Jurusan extends CI_Controller
 			if ($sesi['level'] == 'admin') {
 				$data = [
 					'heading' 		=> 'Tambah Data Jurusan',
-					'title'			=> 'Tambah Data Jurusan | InventarisKu',
+					'title'			=> 'Tambah Data Jurusan',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Jurusan',
 					'sidebar_item'	=> ''
@@ -69,7 +69,7 @@ class Jurusan extends CI_Controller
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
 						'heading' 		=> 'Tambah Data Jurusan',
-						'title'			=> 'Master Data Jurusan | InventarisKu',
+						'title'			=> 'Master Data Jurusan',
 						'card_header'	=> 'List Data Jurusan',
 						'side_menu'		=> 'Master Data',
 						'submenu_item'	=> 'Data Jurusan',
@@ -99,7 +99,7 @@ class Jurusan extends CI_Controller
 			if ($sesi['level'] == 'admin') {
 				$data = [
 					'heading' 		=> 'Edit Data Jurusan',
-					'title'			=> 'Edit Data Jurusan | InventarisKu',
+					'title'			=> 'Edit Data Jurusan',
 					'side_menu'		=> 'Master Data',
 					'submenu_item'	=> 'Data Jurusan',
 					'sidebar_item'	=> '',
@@ -127,7 +127,7 @@ class Jurusan extends CI_Controller
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
 						'heading' 		=> 'Edit Data Barang',
-						'title'			=> 'Edit Data Barang | InventarisKu',
+						'title'			=> 'Edit Data Barang',
 						'barang'		=> $this->Jurusan_model->get_details($id)
 					];
 					$this->load->view('template/header', $data);
