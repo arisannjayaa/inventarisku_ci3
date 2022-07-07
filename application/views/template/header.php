@@ -160,7 +160,7 @@
 							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
 								<div class="card">
 									<div class="card-body">
-										<h5><?= $heading ?></h5>
+										<span class="fs-5 fw-bold text-primary"><?= $heading ?></span>
 									</div>
 								</div>
 
