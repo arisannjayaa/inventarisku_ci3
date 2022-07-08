@@ -81,7 +81,7 @@
 					<div class="alert alert-light-success color-success"><?= $this->session->flashdata('logged') ?></div>
 				<?php } ?>
 				<div class="page-heading">
-					<h3>Belanja</h3>
+					<h3>List Inventaris Yang Bisa Kamu Sewa 🥰</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -89,7 +89,7 @@
 							<div class="row">
 								<?php foreach ($barang as $key) { ?>
 									<div class="col-lg-3">
-										<div class="card">
+										<div class="card shadow-sm">
 											<div class="card-content">
 												<img class="card-img-top img-fluid" src="<?= base_url('') ?>public/dist/assets/images/samples/origami.jpg" alt="Card image cap" style="height: 15rem" />
 												<div class="card-body">
