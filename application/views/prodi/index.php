@@ -7,7 +7,7 @@ if ($this->session->flashdata('add_success')) { ?>
 	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
 <?php }
 ?>
-<div class="card">
+<div class="card" style="border: 2px solid #545BFC;">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
 		<a href="<?= base_url('prodi/add') ?>" class="btn btn-primary">Tambah</a>
@@ -36,7 +36,6 @@ if ($this->session->flashdata('add_success')) { ?>
 							<a href="<?= base_url('prodi/edit/') . $key->id_prodi ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
-							<a href="#" class="btn btn-primary"><i class="fa-fw select-all fas"></i></a>
 							<a href="<?= base_url('prodi/remove/') . $key->id_prodi ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
 						</td>
 					</tr>

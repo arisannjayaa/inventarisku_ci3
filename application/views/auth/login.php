@@ -17,6 +17,8 @@
 			<div class="col-lg-3">
 				<?php if ($this->session->flashdata('gagal')) { ?>
 					<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
+				<?php } elseif ($this->session->flashdata('register_sukses')) { ?>
+					<div class="alert alert-success"><?= $this->session->flashdata('register_sukses'); ?></div>
 				<?php } ?>
 				<div class="card" style="border: 1px solid #545BFC;">
 					<div class="card-content">
@@ -30,7 +32,7 @@
 									</div>
 									<div class="form-group mb-4">
 										<label for="password">Password</label>
-										<input type="password" id="password" class="form-control" placeholder="Password" name="pass" required>
+										<input type="password" id="password" class="form-control" placeholder="Password" name="pass">
 									</div>
 								</div>
 								<div class="form-actions d-grid mb-2">

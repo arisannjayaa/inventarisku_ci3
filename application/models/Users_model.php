@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Barang_model extends CI_Model
+class Users_model extends CI_Model
 {
 	public function rules()
 	{
@@ -36,7 +36,7 @@ class Barang_model extends CI_Model
 
 	public function get_all()
 	{
-		$query = $this->db->get('tb_barang')->result();
+		$query = $this->db->get('tb_user')->result();
 		return $query;
 	}
 
@@ -79,4 +79,4 @@ class Barang_model extends CI_Model
 }
 
 
-/* End of file Barang_model.php and path \application\models\Barang_model.php */
+/* End of file Users_model.php and path \application\models\Users_model.php */

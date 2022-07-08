@@ -50,6 +50,7 @@
 					</div>
 				</div>
 				<div class="sidebar-menu">
+
 					<ul class="menu">
 						<li class="sidebar-title">Menu</li>
 
@@ -59,6 +60,7 @@
 								<span>Dashboard</span>
 							</a>
 						</li>
+
 						<?php if ($this->session->userdata('level') == 'admin') { ?>
 							<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
 								<a href="#" class='sidebar-link'>
@@ -129,9 +131,14 @@
 											<h6 class="mb-0 text-gray-600"><?= ucfirst($this->session->userdata('username')) ?></h6>
 											<p class="mb-0 text-sm text-gray-600"><?= ucfirst($this->session->userdata('level')) ?></p>
 										</div>
+										<?php
+										$id_users = $this->session->userdata('id_user');
+										$data_users = $this->db->query("select * from tb_user where id_user = '$id_users'");
+										$row = $data_users->row();
+										?>
 										<div class="user-img d-flex align-items-center">
 											<div class="avatar avatar-md">
-												<img src="<?= base_url('') ?>/public/dist/assets/images/faces/1.jpg">
+												<img src="<?= base_url('public/dist/assets/images/avatars/' . $row->avatar) ?>">
 											</div>
 										</div>
 									</div>
@@ -158,7 +165,7 @@
 					<div class="page-title">
 						<div class="row">
 							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
-								<div class="card">
+								<div class="card" style="border: 2px solid #545BFC;">
 									<div class="card-body">
 										<span class="fs-5 fw-bold text-primary" style="text-shadow: 20px;"><?= $heading ?></span>
 									</div>
