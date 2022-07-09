@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card shadow-sm">
 	<div class="card-content">
 		<div class="card-body">
 			<form class="form form-horizontal" method="post" action="<?= base_url('prodi/add_prosess') ?>">

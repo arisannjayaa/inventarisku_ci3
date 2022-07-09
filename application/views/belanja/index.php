@@ -50,8 +50,8 @@
 					</div>
 				</div>
 				<nav class="main-navbar">
-					<div class="container ms-auto">
-						<ul class="justify-content-end align-items-center">
+					<div class="container">
+						<ul class="justify-content-end">
 							<li class="menu-item">
 								<a href="<?= base_url('') ?>" class='menu-link'>
 									<i class="bi bi-grid-fill"></i>
@@ -88,7 +88,7 @@
 						<div class="col-12 col-lg-12">
 							<div class="row">
 								<?php foreach ($barang as $key) { ?>
-									<div class="col-lg-3">
+									<div class="col-lg-3 col-12 col-md-6">
 										<div class="card shadow-sm">
 											<div class="card-content">
 												<img class="card-img-top img-fluid" src="<?= base_url('') ?>public/dist/assets/images/samples/origami.jpg" alt="Card image cap" style="height: 15rem" />
@@ -96,11 +96,11 @@
 													<h6 class="fs-6 fw-bold"><?= $key->nama_barang ?></h6>
 													<div class="mb-3">
 														<span class="d-block">Stok <?= $key->stok_barang ?></span>
-														<span class="d-block <?= ($key->stok_barang > 0) ? 'text-success' : 'text-danger' ?>"><?= ($key->stok_barang > 0) ? 'Tersedia' : 'Kosong' ?></span>
+														<span class="d-block fw-bold <?= ($key->stok_barang > 0) ? 'text-success' : 'text-danger' ?>"><?= ($key->stok_barang > 0) ? 'Tersedia' : 'Kosong' ?></span>
 													</div>
 													<div class="d-grid gap-2">
 														<button class="btn btn-outline-primary">Detail</button>
-														<button class="btn btn-primary">Keranjang</button>
+														<button class="btn btn-primary <?= ($key->stok_barang <= 0) ? 'disabled' : '' ?>">Keranjang</button>
 													</div>
 												</div>
 											</div>

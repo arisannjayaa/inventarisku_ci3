@@ -165,7 +165,7 @@
 					<div class="page-title">
 						<div class="row">
 							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
-								<div class="card" style="border: 2px solid #545BFC;">
+								<div class="card shadow-sm">
 									<div class="card-body">
 										<span class="fs-5 fw-bold text-primary" style="text-shadow: 20px;"><?= $heading ?></span>
 									</div>

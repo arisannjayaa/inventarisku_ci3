@@ -7,18 +7,18 @@ if ($this->session->flashdata('add_success')) { ?>
 	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
 <?php }
 ?>
-<div class="card" style="border: 2px solid #545BFC;">
+<div class="card shadow-sm">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
 		<a href="<?= base_url('barang/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
-	<div class="card-body table-responsive">
+	<div class="card-body table-responsive  py-1">
 		<table class="table" id="table1">
 			<thead>
 				<tr>
-					<th style="width: 8%;">No</th>
+					<th style="width: 2%;">No</th>
 					<th>Nama</th>
-					<th>Stok</th>
+					<th style="width: 10%;">Stok</th>
 					<th>Harga</th>
 					<th>Aksi</th>
 				</tr>
@@ -28,7 +28,7 @@ if ($this->session->flashdata('add_success')) { ?>
 				$no = 1;
 				foreach ($barang as $key) { ?>
 					<tr>
-						<td style="width: 8%;"><?= $no++ ?></td>
+						<td><?= $no++ ?></td>
 						<td><?= $key->nama_barang ?></td>
 						<td><?= $key->stok_barang ?></td>
 						<td><?= $key->harga_barang ?></td>
@@ -85,11 +85,12 @@ if ($this->session->flashdata('add_success')) { ?>
 			</div>
 		</div>
 	</div>
-	<script>
-		function confirm_del(url) {
-			if (confirm('Yakin ingin menghapus data ini?')) {
-				window.location.href = url;
-			}
-			return false;
+</div>
+<script>
+	function confirm_del(url) {
+		if (confirm('Yakin ingin menghapus data ini?')) {
+			window.location.href = url;
 		}
-	</script>
+		return false;
+	}
+</script>

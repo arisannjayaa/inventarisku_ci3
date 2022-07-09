@@ -14,13 +14,13 @@
 <body>
 	<div id="auth">
 		<div class="row h-100 justify-content-center align-items-center" style="background-color: #F0F1FF;">
-			<div class="col-lg-3">
+			<div class="col-lg-3 col-10">
 				<?php if ($this->session->flashdata('gagal')) { ?>
 					<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
 				<?php } elseif ($this->session->flashdata('register_sukses')) { ?>
 					<div class="alert alert-success"><?= $this->session->flashdata('register_sukses'); ?></div>
 				<?php } ?>
-				<div class="card" style="border: 1px solid #545BFC;">
+				<div class="card shadow-sm">
 					<div class="card-content">
 						<div class="card-body">
 							<h1 class="text-center fs-4 mb-4" style="color: #333333;">Login | Inventaris<span style="color: #545BFC">Ku</span></h1>

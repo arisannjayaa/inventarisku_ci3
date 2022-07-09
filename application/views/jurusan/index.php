@@ -7,19 +7,19 @@ if ($this->session->flashdata('add_success')) { ?>
 	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
 <?php }
 ?>
-<div class="card" style="border: 2px solid #545BFC;">
+<div class="card shadow-sm">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
 		<a href="<?= base_url('jurusan/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
-	<div class="card-body table-responsive">
+	<div class="card-body table-responsive  py-1">
 		<table class="table" id="table1">
 			<thead>
 				<tr>
-					<th style="width: 8%;">No</th>
-					<th>Kode</th>
+					<th style="width: 2%;">No</th>
+					<th style="width: 15%;">Kode</th>
 					<th>Nama</th>
-					<th>Aksi</th>
+					<th style="width: 20%;">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,10 +27,10 @@ if ($this->session->flashdata('add_success')) { ?>
 				$no = 1;
 				foreach ($jurusan as $key) { ?>
 					<tr>
-						<td style="width: 8%;"><?= $no++ ?></td>
-						<td style="width: 8%;"><?= $key->id_jurusan ?></td>
+						<td><?= $no++ ?></td>
+						<td><?= $key->id_jurusan ?></td>
 						<td><?= $key->nama_jurusan ?></td>
-						<td style="width: 20%;">
+						<td>
 							<a href="<?= base_url('jurusan/edit/') . $key->id_jurusan ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>

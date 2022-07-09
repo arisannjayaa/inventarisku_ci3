@@ -15,7 +15,7 @@
 	<div class="container-fluid pt-5">
 		<div class="row justify-content-center align-items-center">
 			<div class="col-lg-5">
-				<div class="card" style="border: 1px solid #545BFC;">
+				<div class="card shadow-sm">
 					<div class="card-content">
 						<div class="card-body">
 							<h1 class="text-center fs-4 mb-4" style="color: #333333;">Register | Inventaris<span style="color: #545BFC">Ku</span></h1>

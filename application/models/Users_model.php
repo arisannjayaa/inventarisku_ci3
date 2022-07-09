@@ -36,6 +36,7 @@ class Users_model extends CI_Model
 
 	public function get_all()
 	{
+		$this->db->where('level !=', 'admin');
 		$query = $this->db->get('tb_user')->result();
 		return $query;
 	}

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card shadow-sm">
 	<div class="card-content">
 		<div class="card-body">
 			<?php foreach ($prodi as $key) { ?>
