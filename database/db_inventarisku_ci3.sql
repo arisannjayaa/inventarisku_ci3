@@ -82,7 +82,10 @@ create table tb_orders(
 	tanggal_pinjam date,
 	tanggal_kembali date,
 	jumlah_orders int,
-	status_bayar ('lunas', 'belum')
+	catatan text,
+	metode_bayar enum('transfer', 'bayar ditempat');
+	status_bayar enum('lunas', 'belum'),
+	status_pesanan enum ('proses', 'diambil');
 );
 
 create table tb_transaksi(
