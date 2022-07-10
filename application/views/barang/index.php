@@ -46,46 +46,6 @@ if ($this->session->flashdata('add_success')) { ?>
 		</table>
 	</div>
 </div>
-<div class="modal fade text-left modal-borderless" id="border-less" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Details</h5>
-				<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-					<i data-feather="x"></i>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-6">
-										<img src="<?= base_url('public/dist/assets/images/barang/yamaha.jpg') ?>" class="img-fluid" alt="">
-									</div>
-									<div class="col">
-										<h1></h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-						<i class="bx bx-x d-block d-sm-none"></i>
-						<span class="d-none d-sm-block">Close</span>
-					</button>
-					<button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-						<i class="bx bx-check d-block d-sm-none"></i>
-						<span class="d-none d-sm-block">Accept</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 <script>
 	function confirm_del(url) {
 		if (confirm('Yakin ingin menghapus data ini?')) {
