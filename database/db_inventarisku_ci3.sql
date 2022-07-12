@@ -91,8 +91,9 @@ create table tb_orders(
 
 create table tb_transaksi(
 	id_transaksi,
+	id_orders,
 	status_bayar,
-	status_pengembalian
+	status_pengembalian enum('belum', 'kembali')
 );
 
 
