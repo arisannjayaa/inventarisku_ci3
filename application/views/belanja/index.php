@@ -6,16 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Belanja</title>
 
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/main/app.css">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.svg" type="image/x-icon">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.png" type="image/png">
 
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/vendors/iconly/bold.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/shared/iconly.css">
 
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/app.css">
-	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -24,27 +20,27 @@
 			<header class="mb-5">
 				<div class="header-top">
 					<div class="container">
-						<div class="logo">
-							<a href="<?= base_url('belanja') ?>" class="fw-bold fs-4">InventarisKu</a>
+						<div class="logo fs-4 fw-bold">
+							<a href="<?= base_url('') ?>" class="text-dark">Inventaris<span class="text-primary">Ku</span></a>
 						</div>
 						<div class="header-top-right">
-
+							<?php
+							$id_users = $this->session->userdata('id_user');
+							$data_users = $this->db->query("select * from tb_user where id_user = '$id_users'");
+							$row = $data_users->row();
+							?>
 							<div class="dropdown">
-								<?php
-								$id_users = $this->session->userdata('id_user');
-								$data_users = $this->db->query("select * from tb_user where id_user = '$id_users'");
-								$row = $data_users->row();
-								?>
 								<a href="#" class="user-dropdown d-flex dropend" data-bs-toggle="dropdown" aria-expanded="false">
 									<div class="avatar avatar-md2">
-										<img src="<?= base_url('public/dist/assets/images/avatars/' . $row->avatar) ?>" alt="Avatar">
+										<img src="<?= base_url('public/dist/assets/images/avatars/' . $row->avatar) ?>">
 									</div>
 									<div class="text">
-										<h6 class="user-dropdown-name"><?= $this->session->userdata('username'); ?></h6>
-										<p class="user-dropdown-status text-sm text-muted"><?= $this->session->userdata('level'); ?></p>
+										<h6 class="mb-0 text-gray-600"><?= ucfirst($this->session->userdata('username')) ?></h6>
+										<p class="mb-0 text-sm text-gray-600"><?= ucfirst($this->session->userdata('level')) ?></p>
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton1">
+									<li><a class="dropdown-item" href="#">Profile Saya</a></li>
 									<li><a class="dropdown-item" href="<?= base_url('') ?>">Dashboard</a></li>
 									<li>
 										<hr class="dropdown-divider">
@@ -72,9 +68,7 @@
 						</ul>
 					</div>
 				</nav>
-
 			</header>
-
 			<div class="content-wrapper container">
 				<?php if ($this->session->flashdata('logged')) { ?>
 					<div class="alert alert-light-success color-success"><?= $this->session->flashdata('logged') ?></div>
@@ -84,13 +78,13 @@
 				</div>
 				<div class="page-content">
 					<section class="row">
-						<div class="col-12 col-lg-12">
+						<div class="col-12 col-lg-12 col-md-10">
 							<div class="row">
 								<?php foreach ($barang as $key) { ?>
-									<div class="col-lg-3 col-md-2 col-12">
-										<div class="card shadow-sm">
+									<div class="col-6 col-lg-3 col-md-6">
+										<div class="card">
 											<div class="card-content">
-												<img class="card-img-top img-fluid p-4" src="<?= base_url('') ?>public/assets/images/barang/default.png" alt="Card image cap" style="height: 15rem" />
+												<img class="card-img-top img-fluid" src="<?= base_url('') ?>public/assets/images/samples/origami.jpg" alt="Card image cap" style="height: 20rem" />
 												<div class="card-body">
 													<h6 class="fs-6 fw-bold"><?= $key->nama_barang ?></h6>
 													<div class="mb-3">
@@ -107,15 +101,14 @@
 									</div>
 								<?php } ?>
 							</div>
-						</div>
 					</section>
 				</div>
-
 			</div>
 		</div>
 	</div>
-	<script src="<?= base_url('') ?>public/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script src="<?= base_url('') ?>public/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="<?= base_url('') ?>public/assets/js/app.js"></script>
+	<script src="<?= base_url('') ?>public/assets/js/pages/dashboard.js"></script>
+
 	<script src="<?= base_url('') ?>public/assets/js/pages/horizontal-layout.js"></script>
 </body>
 

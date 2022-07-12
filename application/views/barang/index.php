@@ -7,12 +7,13 @@ if ($this->session->flashdata('add_success')) { ?>
 	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
 <?php }
 ?>
+
 <div class="card shadow-sm">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
 		<a href="<?= base_url('barang/add') ?>" class="btn btn-primary">Tambah</a>
 	</div>
-	<div class="card-body table-responsive  py-1">
+	<div class="card-body">
 		<table class="table" id="table1">
 			<thead>
 				<tr>
@@ -46,11 +47,3 @@ if ($this->session->flashdata('add_success')) { ?>
 		</table>
 	</div>
 </div>
-<script>
-	function confirm_del(url) {
-		if (confirm('Yakin ingin menghapus data ini?')) {
-			window.location.href = url;
-		}
-		return false;
-	}
-</script>

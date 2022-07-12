@@ -4,12 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login - Mazer Admin Dashboard</title>
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/app.css">
+	<title>Login</title>
+	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/main/app.css">
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/auth.css">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.svg" type="image/x-icon">
+	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.png" type="image/png">
 </head>
 
 <body>
@@ -18,10 +17,14 @@
 		<div class="container-fluid pt-5">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-5">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="text-center fs-4 text-dark">Login | Inventaris<span class="text-primary">Ku</span></h1>
+						</div>
+					</div>
 					<div class="card shadow-sm">
 						<div class="card-content">
 							<div class="card-body">
-								<h1 class="text-center fs-4 mb-4" style="color: #333333;">Register | Inventaris<span style="color: #545BFC">Ku</span></h1>
 								<form class="form" method="post" action="<?= base_url('auth/register_proses') ?>">
 									<div class="form-body">
 										<div class="row">
