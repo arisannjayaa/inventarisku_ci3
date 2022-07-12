@@ -37,7 +37,7 @@ if ($this->session->flashdata('add_success')) { ?>
 							<a href="<?= base_url('prodi/edit/') . $key->id_prodi ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
-							<a href="<?= base_url('prodi/remove/') . $key->id_prodi ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
+							<a class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('prodi/remove/') . $key->id_prodi ?>')"></i></a>
 						</td>
 					</tr>
 				<?php

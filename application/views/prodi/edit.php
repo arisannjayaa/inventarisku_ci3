@@ -30,12 +30,12 @@
 								<label>Nama Prodi</label>
 							</div>
 							<div class="col-md-8 form-group">
-								<input type="text" class="form-control" name="prodi" placeholder="Nama Barang" value="<?= $key->nama_prodi ?>">
+								<input type="text" class="form-control <?= (form_error('prodi')) ? 'is-invalid' : '' ?>" name="prodi" placeholder="Nama Barang" value="<?= $key->nama_prodi ?>">
 								<small class="text-danger"><?= form_error('prodi') ?></small>
 							</div>
 							<div class="col-sm-12 d-flex justify-content-end">
 								<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-								<button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+								<a href="<?= base_url('prodi') ?>" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
 							</div>
 						</div>
 					</div>

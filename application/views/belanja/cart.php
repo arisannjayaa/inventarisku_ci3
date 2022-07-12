@@ -56,14 +56,19 @@
 						</div>
 					</div>
 				</div>
-
 				<nav class="main-navbar">
 					<div class="container">
 						<ul class="justify-content-end">
 							<li class="menu-item">
+								<a href="<?= base_url('belanja') ?>" class='menu-link'>
+									<i class="bi bi-cart-fill"></i>
+									<span>Belanja <span class="badge bg-danger"></span></span>
+								</a>
+							</li>
+							<li class="menu-item">
 								<a href="<?= base_url('keranjang') ?>" class='menu-link'>
 									<i class="bi bi-basket-fill"></i>
-									<span>Keranjang <span class="badge bg-danger"><?= $belanja ?></span></span>
+									<span>Keranjang <span class="badge bg-danger"><?= $belanja ?></span>
 								</a>
 							</li>
 						</ul>
@@ -75,32 +80,44 @@
 					<div class="alert alert-light-success color-success"><?= $this->session->flashdata('logged') ?></div>
 				<?php } ?>
 				<div class="page-heading">
-					<h3>List Inventaris Yang Bisa Kamu Sewa 🥰</h3>
+					<h3>Keranjang</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
 						<div class="col-12 col-lg-12 col-md-10">
 							<div class="row">
-								<?php foreach ($barang as $key) { ?>
-									<div class="col-6 col-lg-3 col-md-6">
-										<div class="card shadow-sm">
-											<div class="card-content">
-												<img class="card-img-top img-thumbnail p-4" src="<?= base_url('public/assets/images/barang/' . $key->gambar_barang) ?>" alt=" Card image cap" style="height: 13rem" />
-												<div class="card-body">
-													<h6 class="fs-6 fw-bold"><?= $key->nama_barang ?></h6>
-													<div class="mb-3">
-														<span class="d-block">Stok <?= $key->stok_barang ?></span>
-														<span class="d-block fw-bold <?= ($key->stok_barang > 0) ? 'text-success' : 'text-danger' ?>"><?= ($key->stok_barang > 0) ? 'Tersedia' : 'Kosong' ?></span>
-													</div>
-													<div class="d-grid gap-2">
-														<a class="btn btn-outline-primary">Detail</a>
-														<a href="<?= base_url('belanja/addcart/' . $key->id_barang) ?>" class="btn btn-primary <?= ($key->stok_barang <= 0) ? 'disabled' : '' ?>">Keranjang</a>
-													</div>
-												</div>
+								<div class="col-lg-8">
+									<?php if (!$this->cart->contents()) { ?>
+										<div class="alert alert-primary">Yahh kamu belum memilih inventaris yang mau disewa</div>
+									<?php } ?>
+									<?php
+									foreach ($this->cart->contents() as $cart) { ?>
+										<div class="d-flex mb-3">
+											<div class="d-flex align-items-center justify-content-center bg-white p-4 rounded-3 shadow-sm">
+												<img src="<?= base_url('public/assets/images/barang/default.png') ?>" alt=" Card image cap" height="70px" width="70px" />
+											</div>
+											<div class="ms-3 d-flex justify-content-end flex-column">
+												<span class="d-block fs-5 text-primary"><?= $cart['name'] ?></span>
+												<span class="d-block">Jumlah <?= $cart['qty'] ?></span>
+												<span class="d-block fw-bold">Rp.<?= $cart['price'] ?></span>
+											</div>
+										</div>
+									<?php } ?>
+								</div>
+								<div class="col-4">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex justify-content-between align-items-center">
+												<h5>Total Harga</h5>
+												<span class="fs-5 fw-bold">Rp.<?= $this->cart->total() ?></span>
+											</div>
+											<hr>
+											<div class="d-grid">
+												<a href="#" class="btn btn-primary p-2">Pesan</a>
 											</div>
 										</div>
 									</div>
-								<?php } ?>
+								</div>
 							</div>
 					</section>
 				</div>

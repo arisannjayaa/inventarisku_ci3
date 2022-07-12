@@ -8,18 +8,27 @@ class Prodi_model extends CI_Model
 		return [
 			[
 				'field' => 'id',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[4]'
+				'rules' => 'required|max_length[4]',
+				'errors' => [
+					'required' => 'Kode Prodi tidak boleh kosong',
+					'max_length' => 'Nama telalu panjang (Max 4 Karakter)'
+				],
 			],
 			[
 				'field' => 'prodi',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[100]'
+				'rules' => 'required|max_length[100]',
+				'errors' => [
+					'required' => 'Nama Prodi tidak boleh kosong',
+					'max_length' => 'Nama telalu panjang (Max 100 Karakter)'
+				],
 			],
 			[
 				'field' => 'jurusan',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[4]'
+				'rules' => 'required|max_length[2]',
+				'errors' => [
+					'required' => 'Nama Jurusan tidak boleh kosong',
+					'max_length' => 'Nama telalu panjang (Max 2 Karakter)'
+				],
 			],
 		];
 	}

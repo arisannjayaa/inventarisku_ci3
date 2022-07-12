@@ -8,13 +8,19 @@ class Jurusan_model extends CI_Model
 		return [
 			[
 				'field' => 'id',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[2]'
+				'rules' => 'required|max_length[2]',
+				'errors' => [
+					'required' => 'Kode Jurusan tidak boleh kosong',
+					'max_length' => 'Nama telalu panjang (Max 2 Karakter)'
+				],
 			],
 			[
 				'field' => 'jurusan',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[2]'
+				'rules' => 'required|max_length[2]',
+				'errors' => [
+					'required' => 'Nama Jurusan tidak boleh kosong',
+					'max_length' => 'Nama telalu panjang (Max 2 Karakter)'
+				],
 			],
 		];
 	}

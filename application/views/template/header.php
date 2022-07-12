@@ -134,7 +134,7 @@
 										?>
 										<div class="user-img d-flex align-items-center">
 											<div class="avatar avatar-md">
-												<img src="<?= base_url('public/dist/assets/images/avatars/' . $row->avatar) ?>">
+												<img src="<?= base_url('public/assets/images/avatars/' . $row->avatar) ?>">
 											</div>
 										</div>
 									</div>

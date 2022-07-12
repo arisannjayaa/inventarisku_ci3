@@ -8,26 +8,23 @@ class Barang_model extends CI_Model
 		return [
 			[
 				'field' => 'nama',
-				'label'	=> 'Nama',
 				'rules' => 'required|max_length[50]',
-				"errors" => [
+				'errors' => [
 					'required' => 'Nama tidak boleh kosong',
 					'max_length' => 'Nama telalu panjang (Max 50 Karakter)'
 				],
 			],
 			[
 				'field' => 'stok',
-				'label'	=> 'Stok',
 				'rules' => 'required|integer',
-				"errors" => [
+				'errors' => [
 					'required' => 'Stok tidak boleh kosong'
 				],
 			],
 			[
 				'field' => 'harga',
-				'label'	=> 'Harga',
 				'rules' => 'required|integer',
-				"errors" => [
+				'errors' => [
 					'required' => 'Harga tidak boleh kosong'
 				],
 			],

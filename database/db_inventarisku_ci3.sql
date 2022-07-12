@@ -47,23 +47,22 @@ create table tb_user(
 	username varchar(30),
 	password varchar(255),
 	tanggal_lahir date,
-	avatar varchar(50),
+	avatar varchar(50) default 'default.png',
 	foreign key (id_jurusan) references tb_jurusan(id_jurusan),
 	foreign key (id_prodi) references tb_prodi(id_prodi),
-	level enum('admin', 'mahasiswa')
+	level enum('admin', 'mahasiswa') default 'admin'
 );
 
 insert into tb_user(username, password, level) values
-('admin', sha1('admin'), 'admin'),
-('siswa1', sha1('admin'), 'mahasiswa'),
-('siswa2', sha1('admin'), 'mahasiswa');
+('admin', sha1('admin'), 'admin');
 
 create table tb_barang(
 	id_barang int primary key auto_increment,
 	nama_barang varchar(50),
 	stok_barang int,
 	harga_barang int,
-	gambar_barang varchar(255)
+	details text,
+	gambar_barang varchar(255) default 'default.png'
 );
 
 insert into tb_barang(nama_barang, stok_barang, harga_barang) values 

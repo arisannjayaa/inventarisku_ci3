@@ -8,15 +8,15 @@
 							<label>Kode Prodi</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="text" class="form-control" name="id" placeholder="Kode Prodi">
+							<input type="text" class="form-control <?= (form_error('id')) ? 'is-invalid' : '' ?>" name="id" placeholder="Kode Prodi">
 							<small class="text-danger"><?= form_error('prodi') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Nama Prodi</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="text" class="form-control" name="prodi" placeholder="Nama Prodi">
-							<small class="text-danger"><?= form_error('nama') ?></small>
+							<input type="text" class="form-control <?= (form_error('prodi')) ? 'is-invalid' : '' ?>" name="prodi" placeholder="Nama Prodi">
+							<small class="text-danger"><?= form_error('prodi') ?></small>
 						</div>
 						<div class="col-md-4">
 							<label>Nama Jurusan</label>
@@ -32,7 +32,8 @@
 						</div>
 						<div class="col-sm-12 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-							<button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+							<a href="<?= base_url('jurusan') ?>" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
+							<button type="reset" class="btn btn-warning me-1 mb-1">Reset</button>
 						</div>
 					</div>
 				</div>
