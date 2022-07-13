@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/fontawesome.css">
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/datatables.css">
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/main/app.css">
+	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/filepond.css">
 	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.svg" type="image/x-icon">
 	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.png" type="image/png">
 </head>

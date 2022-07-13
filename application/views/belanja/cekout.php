@@ -17,7 +17,7 @@
 	<?php } ?>
 </div>
 <div class="col-lg-4 col-12">
-	<div class="card shadow-sm">
+	<div class="card">
 		<div class="card-body">
 			<div class="d-flex justify-content-between align-items-center">
 				<h5>Total Harga</h5>
@@ -25,7 +25,7 @@
 			</div>
 			<hr>
 			<div class="d-grid">
-				<a href="<?= base_url('cekout') ?>" class="btn btn-primary p-2">Pesan</a>
+				<a href="<?= base_url('') ?>" class="btn btn-primary p-2">Pesan</a>
 			</div>
 		</div>
 	</div>

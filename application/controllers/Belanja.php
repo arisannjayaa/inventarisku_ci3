@@ -20,9 +20,13 @@ class Belanja extends CI_Controller
 			$this->load->model('Barang_model');
 			$data = [
 				'barang' => $this->Barang_model->get_all(),
-				'belanja' => $total_qty
+				'belanja' => $total_qty,
+				'title' => 'Belanja',
+				'heading' => 'List inventaris yang bisa kamu sewa :)'
 			];
+			$this->load->view('belanja/header', $data);
 			$this->load->view('belanja/index', $data);
+			$this->load->view('belanja/footer');
 		} else {
 			redirect(base_url(''));
 		}
@@ -55,9 +59,13 @@ class Belanja extends CI_Controller
 			$data = [
 				'barang' => $this->Barang_model->get_all(),
 				'cart'	=> $this->cart->contents(),
-				'belanja' => $total_qty
+				'belanja' => $total_qty,
+				'title' => 'Keranjang',
+				'heading' => 'Keranjang'
 			];
+			$this->load->view('belanja/header', $data);
 			$this->load->view('belanja/cart', $data);
+			$this->load->view('belanja/footer');
 		} else {
 			redirect(base_url(''));
 		}

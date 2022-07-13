@@ -1,30 +1,39 @@
-<div class="card">
+<div class="card shadow-sm">
 	<div class="card-content">
 		<div class="card-body">
-			<form class="form form-horizontal" method="post" action="#">
+			<form class="form form-horizontal" method="post" action="<?= base_url('users/add') ?>">
 				<div class="form-body">
 					<div class="row">
 						<div class="col-md-4">
-							<label>Nama Barang</label>
+							<label></label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="text" class="form-control" name="nama" placeholder="Nama Barang">
+							<input type="text" class="form-control <?= (form_error('id')) ? 'is-invalid' : '' ?>" name="id" placeholder="Kode Prodi">
+							<small class="text-danger"><?= form_error('prodi') ?></small>
 						</div>
 						<div class="col-md-4">
-							<label>Stok Barang</label>
+							<label>Nama Prodi</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="number" class="form-control" name="stok" placeholder="Stok Barang">
+							<input type="text" class="form-control <?= (form_error('prodi')) ? 'is-invalid' : '' ?>" name="prodi" placeholder="Nama Prodi">
+							<small class="text-danger"><?= form_error('prodi') ?></small>
 						</div>
 						<div class="col-md-4">
-							<label>Harga Barang</label>
+							<label>Nama Jurusan</label>
 						</div>
 						<div class="col-md-8 form-group">
-							<input type="number" class="form-control" name="harga" placeholder="Harga Baranh">
+							<select class="choices form-select" name="jurusan">
+								<option value="">Pilih nama jurusan</option>
+								<?php foreach ($jurusan as $key) { ?>
+									<option value="<?= $key->id_jurusan ?>"><?= $key->nama_jurusan ?></option>
+								<?php } ?>
+							</select>
+							<small class="text-danger"><?= form_error('jurusan') ?></small>
 						</div>
 						<div class="col-sm-12 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-							<button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+							<a href="<?= base_url('jurusan') ?>" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
+							<button type="reset" class="btn btn-warning me-1 mb-1">Reset</button>
 						</div>
 					</div>
 				</div>
