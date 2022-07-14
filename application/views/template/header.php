@@ -81,15 +81,6 @@
 							</li>
 						<?php } ?>
 
-						<?php if ($this->session->userdata('level') == 'mahasiswa') { ?>
-							<li class="sidebar-item">
-								<a href="<?= base_url('belanja') ?>" class='sidebar-link'>
-									<i class="bi bi-grid-fill"></i>
-									<span>Belanja</span>
-								</a>
-							</li>
-						<?php } ?>
-
 						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
 							<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
 								<i class="bi bi-grid-fill"></i>
@@ -144,9 +135,12 @@
 									<li>
 										<h6 class="dropdown-header">Hai, <?= ucfirst($this->session->userdata('username')) ?></h6>
 									</li>
-									<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-person me-2"></i> Profile Saya</a></li>
-									<hr class="dropdown-divider">
-									</li>
+									<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-person me-2"></i>Profile Saya</a></li>
+									<?php if ($this->session->userdata('level') != 'admin') { ?>
+										<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-cart me-2"></i>Belanja</a></li>
+										<hr class="dropdown-divider">
+										</li>
+									<?php } ?>
 									<li><a class="dropdown-item" href="<?= base_url('auth/logout') ?>"><i class="icon-mid bi bi-box-arrow-left me-2"></i>Keluar</a></li>
 								</ul>
 							</div>
