@@ -137,7 +137,7 @@
 									</li>
 									<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-person me-2"></i>Profile Saya</a></li>
 									<?php if ($this->session->userdata('level') != 'admin') { ?>
-										<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-cart me-2"></i>Belanja</a></li>
+										<li><a class="dropdown-item" href="<?= base_url('belanja') ?>"><i class="icon-mid bi bi-cart me-2"></i>Belanja</a></li>
 										<hr class="dropdown-divider">
 										</li>
 									<?php } ?>
