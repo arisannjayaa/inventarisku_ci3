@@ -14,7 +14,7 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label for="file_gambar" class="form-label">Upload Gambar</label>
-									<input class="form-control" type="file" id="file_gambar" name="file_gambar" onchange="img_preview()">
+									<input class="form-control" type="file" name="gambar" id="file_gambar" onchange="img_preview()">
 								</div>
 							</div>
 							<div class="col-12">

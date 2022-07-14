@@ -135,7 +135,7 @@
 									<li>
 										<h6 class="dropdown-header">Hai, <?= ucfirst($this->session->userdata('username')) ?></h6>
 									</li>
-									<li><a class="dropdown-item" href=""><i class="icon-mid bi bi-person me-2"></i>Profile Saya</a></li>
+									<li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="icon-mid bi bi-person me-2"></i>Profile Saya</a></li>
 									<?php if ($this->session->userdata('level') != 'admin') { ?>
 										<li><a class="dropdown-item" href="<?= base_url('belanja') ?>"><i class="icon-mid bi bi-cart me-2"></i>Belanja</a></li>
 										<hr class="dropdown-divider">
@@ -163,6 +163,8 @@
 									echo $this->session->flashdata('update_success');
 								} elseif ($this->session->flashdata('logged')) {
 									echo $this->session->flashdata('logged');
+								} elseif ($this->session->flashdata('error_upload')) {
+									echo $this->session->flashdata('error_upload');
 								}
 								?>
 								<div class="card shadow-sm">

@@ -81,24 +81,24 @@ class Barang extends CI_Controller
 					$this->load->view('barang/tambah');
 					$this->load->view('template/footer', $data);
 				} else {
-					// $post = $this->input->post(null, true);
-					// $config['upload_path']          = '.public/assets/images';
-					// $config['allowed_types']        = 'gif|jpg|png';
-					// $config['max_size']        		= 2048;
-					// $config['file_name']        	= 'barang-' . date('ymd') . '-' . substr(md5(rand()), 0, 100);
-					// $this->load->library('upload', $config);
+					$post = $this->input->post(null, true);
+					$file_name 						= 'barang-' . date('ymd') . '-' . substr(md5(rand()), 0, 100);
+					$config['upload_path']          = FCPATH . '/public/assets/images/barang';
+					$config['allowed_types']        = 'gif|jpg|jpeg|png';
+					$config['file_name']            = $file_name;
+					$config['overwrite']            = true;
+					$config['max_size']             = 1024; // 1MB
 
-					if ($_FILES['file_gambar']['name'] != null) {
-						if ($this->upload->do_upload('file_gambar')) {
-							$post['file_gambar'] = $this->upload->data('file_name');
-							$this->barang_model->insert($post);
-							$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil ditambahkan</div>');
-							redirect('barang');
-						} else {
-							var_dump($_FILES['file_gambar']['name']);
-						}
+					$this->load->library('upload', $config);
+
+					if (!$this->upload->do_upload('gambar')) {
+						$this->session->set_flashdata('error_upload', '<div class="alert alert-light-danger">Gagal menambahkan data</div>');
+						redirect(base_url('barang'));
 					} else {
-						echo 'error';
+						$post['gambar'] = $this->upload->data('file_name');
+						$this->Barang_model->insert($post);
+						$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil ditambahkan</div>');
+						redirect(base_url('barang'));
 					}
 				}
 			} else {
@@ -156,7 +156,7 @@ class Barang extends CI_Controller
 				} else {
 					$this->Barang_model->update();
 					$this->session->set_flashdata('update_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
-					redirect('barang');
+					redirect(base_url('barang'));
 				}
 			} else {
 				redirect(base_url(''));

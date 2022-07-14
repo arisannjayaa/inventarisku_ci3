@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Barang_model extends CI_Model
+class Profile_model extends CI_Model
 {
 	public function rules()
 	{
@@ -31,9 +31,9 @@ class Barang_model extends CI_Model
 		];
 	}
 
-	public function get_all()
+	public function get_all($id)
 	{
-		$query = $this->db->get('tb_barang')->result();
+		$query = $this->db->query("select * from tb_user inner join tb_jurusan on tb_user.id_jurusan=tb_jurusan.id_jurusan inner join tb_prodi on tb_user.id_prodi=tb_prodi.id_prodi where id_user='$id'")->row();
 		return $query;
 	}
 
@@ -76,4 +76,4 @@ class Barang_model extends CI_Model
 }
 
 
-/* End of file Barang_model.php and path \application\models\Barang_model.php */
+/* End of file Profile_model.php and path \application\models\Profile_model.php */

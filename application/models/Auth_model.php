@@ -106,8 +106,8 @@ class Auth_model extends CI_Model
 		$insert = array(
 			'nim'				=> $this->input->post('nim'),
 			'nama_lengkap' 		=> $this->input->post('nama_lengkap'),
-			'id_jurusan' 		=> $this->input->post('id_jurusan'),
-			'id_prodi' 			=> $this->input->post('id_prodi'),
+			'id_jurusan' 		=> $this->input->post('jurusan'),
+			'id_prodi' 			=> $this->input->post('prodi'),
 			'no_telp' 			=> $this->input->post('no_telp'),
 			'username' 			=> $this->input->post('username'),
 			'password' 			=> sha1($this->input->post('password')),

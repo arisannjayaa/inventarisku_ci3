@@ -84,7 +84,7 @@ class Auth extends CI_Controller
 				$this->load->view('auth/register', $data);
 			} else {
 				$this->Auth_model->register();
-				$this->session->set_flashdata('register_sukses', 'Registrasi akun berhasil');
+				$this->session->set_flashdata('register_sukses', '<div class="alert alert-success">Registrasi akun berhasil</div>');
 				redirect(base_url('login'));
 			}
 		} else {
