@@ -37,15 +37,15 @@ class Barang_model extends CI_Model
 		return $query;
 	}
 
-	public function insert()
+	public function insert($post)
 	{
 		$insert = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('stok'),
-			'harga_barang' => $this->input->post('harga')
+			'nama_barang' 	=> $post['nama'],
+			'stok_barang' 	=> $post['stok'],
+			'harga_barang' 	=> $post['harga'],
+			'gambar_barang' => $post['file_gambar'],
 		);
-		$result = $this->db->insert('tb_barang', $insert);
-		return $result;
+		$this->db->insert('tb_barang', $insert);
 	}
 
 	public function update()

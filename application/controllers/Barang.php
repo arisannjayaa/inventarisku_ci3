@@ -81,9 +81,25 @@ class Barang extends CI_Controller
 					$this->load->view('barang/tambah');
 					$this->load->view('template/footer', $data);
 				} else {
-					$this->Barang_model->insert();
-					$this->session->set_flashdata('add_success', '<div class="alert alert-success">Data berhasil ditambahkan</div>');
-					redirect('barang');
+					// $post = $this->input->post(null, true);
+					// $config['upload_path']          = '.public/assets/images';
+					// $config['allowed_types']        = 'gif|jpg|png';
+					// $config['max_size']        		= 2048;
+					// $config['file_name']        	= 'barang-' . date('ymd') . '-' . substr(md5(rand()), 0, 100);
+					// $this->load->library('upload', $config);
+
+					if ($_FILES['file_gambar']['name'] != null) {
+						if ($this->upload->do_upload('file_gambar')) {
+							$post['file_gambar'] = $this->upload->data('file_name');
+							$this->barang_model->insert($post);
+							$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil ditambahkan</div>');
+							redirect('barang');
+						} else {
+							var_dump($_FILES['file_gambar']['name']);
+						}
+					} else {
+						echo 'error';
+					}
 				}
 			} else {
 				redirect(base_url(''));
@@ -139,7 +155,7 @@ class Barang extends CI_Controller
 					$this->load->view('template/footer', $data);
 				} else {
 					$this->Barang_model->update();
-					$this->session->set_flashdata('update_success', '<div class="alert alert-success">Data berhasil diupdate</div>');
+					$this->session->set_flashdata('update_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
 					redirect('barang');
 				}
 			} else {
@@ -156,7 +172,7 @@ class Barang extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$this->Barang_model->delete($id);
-				$this->session->set_flashdata('delete_success', '<div class="alert alert-danger">Data berhasil dihapus</div>');
+				$this->session->set_flashdata('delete_success', '<div class="alert alert-light-danger">Data berhasil dihapus</div>');
 				redirect('barang');
 			} else {
 				redirect(base_url(''));
