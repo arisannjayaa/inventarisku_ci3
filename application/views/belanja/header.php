@@ -61,6 +61,12 @@
 					<div class="container">
 						<ul class="justify-content-end">
 							<li class="menu-item">
+								<a href="<?= base_url('belanja') ?>" class='menu-link'>
+									<i class="bi bi-cart-fill"></i>
+									<span>Belanja <span class="badge bg-danger"></span>
+								</a>
+							</li>
+							<li class="menu-item">
 								<a href="<?= base_url('keranjang') ?>" class='menu-link'>
 									<i class="bi bi-basket-fill"></i>
 									<span>Keranjang <span class="badge bg-danger"><?= $belanja ?></span></span>
@@ -71,9 +77,9 @@
 				</nav>
 			</header>
 			<div class="content-wrapper container">
-				<?php if ($this->session->flashdata('logged')) { ?>
-					<div class="alert alert-light-success color-success"><?= $this->session->flashdata('logged') ?></div>
-				<?php } ?>
+				<?php if ($this->session->flashdata('logged')) {
+					echo $this->session->flashdata('logged');
+				} ?>
 				<div class="page-heading">
 					<h3><?= $heading ?></h3>
 				</div>

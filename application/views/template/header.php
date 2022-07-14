@@ -161,6 +161,8 @@
 									echo $this->session->flashdata('delete_success');
 								} elseif ($this->session->flashdata('update_success')) {
 									echo $this->session->flashdata('update_success');
+								} elseif ($this->session->flashdata('logged')) {
+									echo $this->session->flashdata('logged');
 								}
 								?>
 								<div class="card shadow-sm">

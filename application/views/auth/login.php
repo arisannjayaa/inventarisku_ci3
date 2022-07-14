@@ -15,11 +15,11 @@
 	<div id="auth">
 		<div class="row h-100 justify-content-center align-items-center" style="background-color: #F0F1FF;">
 			<div class="col-lg-3 col-10">
-				<?php if ($this->session->flashdata('gagal')) { ?>
-					<div class="alert alert-danger"><?= $this->session->flashdata('gagal'); ?></div>
-				<?php } elseif ($this->session->flashdata('register_sukses')) { ?>
-					<div class="alert alert-success"><?= $this->session->flashdata('register_sukses'); ?></div>
-				<?php } ?>
+				<?php if ($this->session->flashdata('gagal')) {
+					echo $this->session->flashdata('gagal');
+				} elseif ($this->session->flashdata('register_sukses')) {
+					echo $this->session->flashdata('register_sukses');
+				} ?>
 				<div class="card">
 					<div class="card-body">
 						<h1 class="text-center fs-4 text-dark">Login | Inventaris<span class="text-primary">Ku</span></h1>

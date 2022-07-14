@@ -33,14 +33,14 @@ class Auth extends CI_Controller
 					'level' => $row->level
 				];
 				$this->session->set_userdata($data);
-				$this->session->set_flashdata('logged', "Selamat Datang $row->username");
+				$this->session->set_flashdata('logged', "<div class=\"alert alert-light-success\">Selamat datang $row->username</div>");
 				if ($row->level == 'admin') {
 					redirect(base_url(''));
 				} else {
 					redirect(base_url('belanja'));
 				}
 			} else {
-				$this->session->set_flashdata('gagal', 'Username atau password salah!!');
+				$this->session->set_flashdata('gagal', '<div class="alert alert-danger">Username atau password salah</div>');
 				redirect(base_url('login'));
 			}
 		} else {

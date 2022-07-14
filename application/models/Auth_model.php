@@ -62,9 +62,10 @@ class Auth_model extends CI_Model
 			[
 				'field' => 'username',
 				'label'	=> 'Username',
-				'rules' => 'required|max_length[30]',
+				'rules' => 'required|min_length[8]|max_length[30]',
 				"errors" => [
 					'required' => 'Username tidak boleh kosong',
+					'min_length' => 'Username minimal (Min 8 Karakter)',
 					'max_length' => 'Username telalu panjang (Max 30 Karakter)',
 				],
 			],
@@ -74,6 +75,7 @@ class Auth_model extends CI_Model
 				'rules' => 'required|max_length[30]',
 				"errors" => [
 					'required' => 'Password tidak boleh kosong',
+					'min_length' => 'Password minimal (Min 8 Karakter)',
 					'max_length' => 'Password telalu panjang (Max 30 Karakter)',
 				],
 			],
