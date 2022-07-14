@@ -160,7 +160,11 @@
 					<div class="page-title">
 						<div class="row">
 							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
-								<h3><?= $heading ?></h3>
+								<div class="card shadow-sm">
+									<div class="card-body">
+										<h4><?= $heading ?></h4>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

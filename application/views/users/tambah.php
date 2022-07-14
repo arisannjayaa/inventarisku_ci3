@@ -1,39 +1,112 @@
 <div class="card shadow-sm">
 	<div class="card-content">
 		<div class="card-body">
-			<form class="form form-horizontal" method="post" action="<?= base_url('users/add') ?>">
+			<form class="form form-horizontal" enctype="multipart/form-data" method="post" action="<?= base_url('users/add_proses') ?>">
 				<div class="form-body">
+					<div class="row mb-3">
+						<div class="col">
+							<img alt="" class=" img-thumbnail p-3" style="height: 200px; width: 200px; ">
+						</div>
+					</div>
 					<div class="row">
-						<div class="col-md-4">
-							<label></label>
-						</div>
-						<div class="col-md-8 form-group">
-							<input type="text" class="form-control <?= (form_error('id')) ? 'is-invalid' : '' ?>" name="id" placeholder="Kode Prodi">
-							<small class="text-danger"><?= form_error('prodi') ?></small>
-						</div>
-						<div class="col-md-4">
-							<label>Nama Prodi</label>
-						</div>
-						<div class="col-md-8 form-group">
-							<input type="text" class="form-control <?= (form_error('prodi')) ? 'is-invalid' : '' ?>" name="prodi" placeholder="Nama Prodi">
-							<small class="text-danger"><?= form_error('prodi') ?></small>
-						</div>
-						<div class="col-md-4">
-							<label>Nama Jurusan</label>
-						</div>
-						<div class="col-md-8 form-group">
-							<select class="choices form-select" name="jurusan">
-								<option value="">Pilih nama jurusan</option>
-								<?php foreach ($jurusan as $key) { ?>
-									<option value="<?= $key->id_jurusan ?>"><?= $key->nama_jurusan ?></option>
-								<?php } ?>
-							</select>
-							<small class="text-danger"><?= form_error('jurusan') ?></small>
-						</div>
-						<div class="col-sm-12 d-flex justify-content-end">
-							<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-							<a href="<?= base_url('jurusan') ?>" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
-							<button type="reset" class="btn btn-warning me-1 mb-1">Reset</button>
+						<div class="col">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="foto_profile" class="form-label">Foto Profile</label>
+									<input class="form-control" type="file" id="foto_profile" name="foto_profile">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="nim">NIM</label>
+									<input type="text" id="nim" class="form-control" name="nim" placeholder="NIM">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="nama">Nama</label>
+									<input type="text" id="nama" class="form-control" name="nama" placeholder="Nama">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="jurusan">Jurusan</label>
+									<select class="choices form-select" name="jurusan">
+										<option value="">Pilih nama jurusan</option>
+										<?php foreach ($jurusan as $jrs) { ?>
+											<option value="<?= $jrs->id_jurusan ?>"><?= $jrs->nama_jurusan ?></option>
+										<?php } ?>
+									</select>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="prodi">Prodi</label>
+									<select class="choices form-select" name="prodi">
+										<option value="">Pilih nama prodi</option>
+										<?php foreach ($prodi as $prd) { ?>
+											<option value="<?= $prd->id_jurusan ?>"><?= $prd->nama_jurusan ?></option>
+										<?php } ?>
+									</select>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="no_telp">No Telepon</label>
+									<input type="number" id="no_telp" class="form-control" name="no_telp" placeholder="No Telepon">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="email" id="email" class="form-control" name="email" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="agama">Agama</label>
+									<input type="number" id="agama" class="form-control" name="agama" placeholder="Agama">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="alamat">Alamat</label>
+									<input type="number" id="alamat" class="form-control" name="alamat" placeholder="Alamat">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="jenis_kelamin">Jenis Kelamin</label>
+									<select class="choices form-select" name="jenis_kelamin">
+										<option value="">Pilih jenis kelamin</option>
+										<option value="Laki-laki">Laki-laki</option>
+										<option value="Perempuan">Perempuan</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="tanggal_lahir">Tanggal Lahir</label>
+									<input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="username">Username</label>
+									<input type="text" id="username" class="form-control" name="username" placeholder="Username">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input type="password" id="password" class="form-control" name="password" placeholder="Password">
+								</div>
+							</div>
+							<div class="col-12 d-flex justify-content-end">
+								<button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+								<a href="<?= base_url('users') ?>" class="btn btn-warning me-1 mb-1">Kembali</a>
+								<button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+							</div>
 						</div>
 					</div>
 				</div>
