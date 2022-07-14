@@ -1,13 +1,3 @@
-<?php
-if ($this->session->flashdata('add_success')) { ?>
-	<div class="alert alert-success"><?= $this->session->flashdata('add_success'); ?></div>
-<?php } elseif ($this->session->flashdata('delete_success')) { ?>
-	<div class="alert alert-danger"><?= $this->session->flashdata('delete_success'); ?></div>
-<?php } elseif ($this->session->flashdata('update_success')) { ?>
-	<div class="alert alert-success"><?= $this->session->flashdata('update_success'); ?></div>
-<?php }
-?>
-
 <div class="card shadow-sm">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>

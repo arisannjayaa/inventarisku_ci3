@@ -83,7 +83,7 @@ class Prodi extends CI_Controller
 					$this->load->view('template/footer', $data);
 				} else {
 					$this->Prodi_model->insert();
-					$this->session->set_flashdata('add_success', 'Data berhasil ditambahkan');
+					$this->session->set_flashdata('add_success', '<div class="alert alert-success">Data berhasil ditambahkan</div>');
 					redirect('prodi');
 				}
 			} else {
@@ -142,7 +142,7 @@ class Prodi extends CI_Controller
 					$this->load->view('template/footer', $data);
 				} else {
 					$this->Prodi_model->update();
-					$this->session->set_flashdata('update_success', 'Data berhasil diupdate');
+					$this->session->set_flashdata('update_success', '<div class="alert alert-success">Data berhasil diupdate</div>');
 					redirect('prodi');
 				}
 			} else {
@@ -159,7 +159,7 @@ class Prodi extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$this->Prodi_model->delete($id);
-				$this->session->set_flashdata('delete_success', 'Data berhasil dihapus');
+				$this->session->set_flashdata('delete_success', '<div class="alert alert-danger">Data berhasil dihapus</div>');
 				redirect('prodi');
 			} else {
 				redirect(base_url(''));

@@ -153,7 +153,16 @@
 				<div class="page-heading">
 					<div class="page-title">
 						<div class="row">
-							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last mb-3">
+							<div class="col-12 col-md-6 col-lg-12 order-md-1 order-last">
+								<?php
+								if ($this->session->flashdata('add_success')) {
+									echo $this->session->flashdata('add_success');
+								} elseif ($this->session->flashdata('delete_success')) {
+									echo $this->session->flashdata('delete_success');
+								} elseif ($this->session->flashdata('update_success')) {
+									echo $this->session->flashdata('update_success');
+								}
+								?>
 								<div class="card shadow-sm">
 									<div class="card-body">
 										<h4><?= $heading ?></h4>
