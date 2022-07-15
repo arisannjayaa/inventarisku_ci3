@@ -4,9 +4,9 @@
 	<?php } ?>
 	<?php
 	foreach ($this->cart->contents() as $cart) { ?>
-		<div class="d-flex mb-3">
-			<div class="d-flex align-items-center justify-content-center bg-white p-4 rounded-3 shadow-sm">
-				<img src="<?= base_url('public/assets/images/barang/default.png') ?>" alt=" Card image cap" height="70px" width="70px" />
+		<div class="d-flex mb-4">
+			<div class="d-flex align-items-center justify-content-center bg-white p-2 rounded-3 shadow-sm">
+				<img src="<?= base_url('public/assets/images/barang/' . $cart['img']) ?>" alt=" Card image cap" height="100px" width="100px" />
 			</div>
 			<div class="ms-3 d-flex justify-content-end flex-column">
 				<span class="d-block fs-5 text-primary"><?= $cart['name'] ?></span>

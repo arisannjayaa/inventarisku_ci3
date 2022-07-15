@@ -54,14 +54,19 @@
 						<td style="width: 1%;">:</td>
 						<td><?= $profile->jenis_kelamin ?></td>
 					</tr>
+					<tr>
+						<td style="width: 20%;">Tanggal Lahir</td>
+						<td style="width: 1%;">:</td>
+						<td><?= $profile->tanggal_lahir ?></td>
+					</tr>
 				</table>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-4">
 				<div class="d-grid">
-					<a href="" class="btn btn-primary mb-2">Edit Profile</a>
-					<a href="" class="btn btn-secondary mb-2">Ubah Sandi</a>
+					<a href="<?= base_url('profile/edit/' . $profile->id_user) ?>" class="btn btn-primary mb-2">Edit Profile</a>
+					<a href="<?= base_url('profile/edit') ?>" class="btn btn-secondary mb-2">Ubah Username & Sandi</a>
 				</div>
 			</div>
 		</div>

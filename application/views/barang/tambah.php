@@ -13,8 +13,8 @@
 						<div class="row">
 							<div class="col-12">
 								<div class="form-group">
-									<label for="file_gambar" class="form-label">Upload Gambar</label>
-									<input class="form-control" type="file" name="gambar" id="file_gambar" onchange="img_preview()">
+									<label for="gambar" class="form-label">Upload Gambar</label>
+									<input class="form-control" type="file" name="gambar" id="gambar" onchange="img_preview()">
 								</div>
 							</div>
 							<div class="col-12">

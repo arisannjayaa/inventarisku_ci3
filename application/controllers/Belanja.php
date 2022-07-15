@@ -41,7 +41,7 @@ class Belanja extends CI_Controller
 			'qty' 		=> 1,
 			'price' 	=> $barang[0]['harga_barang'],
 			'name'		=> $barang[0]['nama_barang'],
-			'options' 	=> array('description' => $barang[0]['deskripsi_barang'])
+			'img'		=> $barang[0]['gambar_barang']
 		];
 		$this->cart->insert($data);
 		redirect('belanja');

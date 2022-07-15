@@ -171,11 +171,18 @@ class Barang extends CI_Controller
 						redirect(base_url('barang'));
 					} else {
 						$gambar_lama = './public/assets/images/barang/' . trim($post['gambar_lama']);
-						unlink($gambar_lama);
-						$post['gambar'] = $this->upload->data('file_name');
-						$this->Barang_model->update($post);
-						$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
-						redirect(base_url('barang'));
+						if ($post['gambar_lama'] == 'default.png') {
+							$post['gambar'] = $this->upload->data('file_name');
+							$this->Barang_model->update($post);
+							$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
+							redirect(base_url('barang'));
+						} else {
+							unlink($gambar_lama);
+							$post['gambar'] = $this->upload->data('file_name');
+							$this->Barang_model->update($post);
+							$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
+							redirect(base_url('barang'));
+						}
 					}
 				}
 			} else {

@@ -9,7 +9,7 @@
 <script src="<?= base_url('') ?>public/assets/js/extensions/filepond.js"></script>
 <script>
 	function img_preview() {
-		const gambar = document.querySelector("#file_gambar");
+		const gambar = document.querySelector("#gambar");
 		const gambar_preview = document.querySelector(".img-preview");
 
 		const file_gambar = new FileReader();
