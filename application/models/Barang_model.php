@@ -43,21 +43,29 @@ class Barang_model extends CI_Model
 			'nama_barang' 	=> $post['nama'],
 			'stok_barang' 	=> $post['stok'],
 			'harga_barang' 	=> $post['harga'],
-			'gambar_barang' => $post['gambar'],
+			'gambar_barang' => $post['gambar']
 		);
 		$this->db->insert('tb_barang', $insert);
 	}
 
-	public function update()
+	public function update($post)
 	{
-		$edit = array(
-			'nama_barang' => $this->input->post('nama'),
-			'stok_barang' => $this->input->post('stok'),
-			'harga_barang' => $this->input->post('harga')
-		);
-		$this->db->where('id_barang', $this->input->post('id'));
-		$result = $this->db->update('tb_barang', $edit);
-		return $result;
+		if ($post['gambar'] == null) {
+			$edit = array(
+				'nama_barang' 	=> $post['nama'],
+				'stok_barang' 	=> $post['stok'],
+				'harga_barang' 	=> $post['harga']
+			);
+		} else {
+			$edit = array(
+				'nama_barang' 	=> $post['nama'],
+				'stok_barang' 	=> $post['stok'],
+				'harga_barang' 	=> $post['harga'],
+				'gambar_barang' => $post['gambar']
+			);
+		}
+		$this->db->where('id_barang', $post['id']);
+		$this->db->update('tb_barang', $edit);
 	}
 
 	public function get_details($id)

@@ -20,19 +20,22 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label for="nama">Nama</label>
-									<input type="text" id="nama" class="form-control" name="nama" placeholder="Nama">
+									<input type="text" id="nama" class="form-control <?= (form_error('nama')) ? 'is-invalid' : '' ?>" name="nama" placeholder="Nama">
+									<small class="text-danger"><?= form_error('nama') ?></small>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-group">
 									<label for="stok">Stok</label>
-									<input type="number" id="stok" class="form-control" name="stok" placeholder="Stok">
+									<input type="number" id="stok" class="form-control <?= (form_error('nama')) ? 'is-invalid' : '' ?>" name="stok" placeholder="Stok">
+									<small class="text-danger"><?= form_error('stok') ?></small>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-group">
 									<label for="harga">Harga</label>
-									<input type="number" id="harga" class="form-control" name="harga" placeholder="Harga">
+									<input type="number" id="harga" class="form-control <?= (form_error('nama')) ? 'is-invalid' : '' ?>" name="harga" placeholder="Harga">
+									<small class="text-danger"><?= form_error('harga') ?></small>
 								</div>
 							</div>
 							<div class="col-12 d-flex justify-content-end">
