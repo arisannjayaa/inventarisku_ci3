@@ -91,6 +91,11 @@ class Auth extends CI_Controller
 			redirect(base_url(''));
 		}
 	}
+
+	public function reset_password()
+	{
+		$this->load->view('auth/reset_password');
+	}
 }
 
 /* End of file Auth.php and path \application\controllers\Auth.php */
