@@ -40,10 +40,11 @@ class Barang_model extends CI_Model
 	public function insert($post)
 	{
 		$insert = array(
-			'nama_barang' 	=> $post['nama'],
-			'stok_barang' 	=> $post['stok'],
-			'harga_barang' 	=> $post['harga'],
-			'gambar_barang' => $post['gambar']
+			'nama_barang' 			=> $post['nama'],
+			'stok_barang' 			=> $post['stok'],
+			'harga_barang' 			=> $post['harga'],
+			'keterangan_barang' 	=> $post['keterangan'],
+			'gambar_barang' 		=> $post['gambar']
 		);
 		$this->db->insert('tb_barang', $insert);
 	}
@@ -52,16 +53,18 @@ class Barang_model extends CI_Model
 	{
 		if ($post['gambar'] == null) {
 			$edit = array(
-				'nama_barang' 	=> $post['nama'],
-				'stok_barang' 	=> $post['stok'],
-				'harga_barang' 	=> $post['harga']
+				'nama_barang' 			=> $post['nama'],
+				'stok_barang' 			=> $post['stok'],
+				'harga_barang' 			=> $post['harga'],
+				'keterangan_barang' 	=> $post['keterangan']
 			);
 		} else {
 			$edit = array(
-				'nama_barang' 	=> $post['nama'],
-				'stok_barang' 	=> $post['stok'],
-				'harga_barang' 	=> $post['harga'],
-				'gambar_barang' => $post['gambar']
+				'nama_barang' 			=> $post['nama'],
+				'stok_barang' 			=> $post['stok'],
+				'harga_barang' 			=> $post['harga'],
+				'keterangan_barang' 	=> $post['keterangan'],
+				'gambar_barang' 		=> $post['gambar']
 			);
 		}
 		$this->db->where('id_barang', $post['id']);

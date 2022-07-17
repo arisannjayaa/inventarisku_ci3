@@ -36,10 +36,10 @@ if ($this->session->flashdata('add_success')) { ?>
 						<td><?= $key->email ?></td>
 						<td>
 							<a href="<?= base_url('users/edit/') . $key->id_user ?>" class="btn btn-warning">
-								<i class="fa-fw select-all fas"></i>
+								<i class="bi bi-pen-fill"></i>
 							</a>
-							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $key->id_user ?>"><i class="fa-fw select-all fas"></i></button>
-							<button onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_user ?>')" class="btn btn-danger"><i class="fa-fw select-all fas"></i></button>
+							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $key->id_user ?>"><i class="bi bi-eye-fill"></i></button>
+							<button onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_user ?>')" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
 						</td>
 					</tr>
 				<?php
@@ -49,11 +49,11 @@ if ($this->session->flashdata('add_success')) { ?>
 	</div>
 </div>
 <?php foreach ($users as $detail) { ?>
-	<div class="modal fade text-left modal-borderless" id="edit<?= $detail->id_user ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	<div class="modal fade text-left modal-borderless" id="detail<?= $detail->id_user ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Detail Barang</h5>
+					<h5 class="modal-title">Detail Users</h5>
 					<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
 						<i data-feather="x"></i>
 					</button>

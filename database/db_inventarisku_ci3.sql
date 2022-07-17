@@ -61,7 +61,7 @@ create table tb_barang(
 	nama_barang varchar(50),
 	stok_barang int,
 	harga_barang int,
-	details text,
+	keterangan_barang text,
 	gambar_barang varchar(255) default 'default.png'
 );
 
@@ -77,10 +77,12 @@ insert into tb_barang(nama_barang, stok_barang, harga_barang) values
 create table transaksi (
 	id_transaksi int primary key auto_increment,
 	id_user int,
+	id_barang int,
 	tanggal_sewa date,
 	tanggal_kembali date,
 	jumlah_barang,
-	keterangan varchar(255)
+	keterangan varchar(255),
+	status enum('Berjalan', 'Selesai'),
 )
 
 create table keranjang(

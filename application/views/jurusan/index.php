@@ -23,9 +23,9 @@
 						<td><?= $key->nama_jurusan ?></td>
 						<td>
 							<a href="<?= base_url('jurusan/edit/') . $key->id_jurusan ?>" class="btn btn-warning">
-								<i class="fa-fw select-all fas"></i>
+								<i class="bi bi-pen-fill"></i>
 							</a>
-							<button class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('jurusan/remove/') . $key->id_jurusan ?>')"></i></button>
+							<button class="btn btn-danger" onclick="confirm_del('<?= base_url('jurusan/remove/') . $key->id_jurusan ?>')"><i class="bi bi-trash3-fill"></i></button>
 						</td>
 					</tr>
 				<?php

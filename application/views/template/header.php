@@ -49,19 +49,35 @@
 				</div>
 				<div class="sidebar-menu">
 					<ul class="menu">
-						<li class="sidebar-title">Menu</li>
+						<li class="sidebar-title">Main Menu</li>
 
 						<li class="sidebar-item <?= ($sidebar_item == 'Dashboard') ? 'active' : ''; ?>">
 							<a href="<?= base_url('') ?>" class='sidebar-link'>
-								<i class="bi bi-grid-fill"></i>
+								<i class="bi bi-grid-1x2-fill"></i>
 								<span>Dashboard</span>
 							</a>
 						</li>
 
+
+						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
+							<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
+								<i class="bi bi-arrow-return-right"></i>
+								<span>Pengembalian</span>
+							</a>
+						</li>
+
+						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
+							<a href="<?= base_url('transaksi') ?>" class='sidebar-link'>
+								<i class="bi bi-cart-fill"></i>
+								<span>Transaksi</span>
+							</a>
+						</li>
+
+						<li class="sidebar-title">Master Data</li>
 						<?php if ($this->session->userdata('level') == 'admin') { ?>
 							<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
 								<a href="<?= base_url('') ?>" class='sidebar-link'>
-									<i class="bi bi-stack"></i>
+									<i class="bi bi-archive-fill"></i>
 									<span>Master Data</span>
 								</a>
 								<ul class="submenu <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
@@ -80,20 +96,6 @@
 								</ul>
 							</li>
 						<?php } ?>
-
-						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
-							<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
-								<i class="bi bi-grid-fill"></i>
-								<span>Pemesanan</span>
-							</a>
-						</li>
-
-						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
-							<a href="<?= base_url('transaksi') ?>" class='sidebar-link'>
-								<i class="bi bi-grid-fill"></i>
-								<span>Transaksi</span>
-							</a>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -102,7 +104,7 @@
 			<header class='mb-3'>
 				<nav class="navbar navbar-expand navbar-light ">
 					<div class="container-fluid">
-						<a href="" class="burger-btn d-block">
+						<a href="#" class="burger-btn d-block">
 							<i class="bi bi-justify fs-3"></i>
 						</a>
 

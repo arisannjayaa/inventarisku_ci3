@@ -25,9 +25,9 @@
 						<td><?= $key->nama_prodi ?></td>
 						<td>
 							<a href="<?= base_url('prodi/edit/') . $key->id_prodi ?>" class="btn btn-warning">
-								<i class="fa-fw select-all fas"></i>
+								<i class="bi bi-pen-fill"></i>
 							</a>
-							<button class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('prodi/remove/') . $key->id_prodi ?>')"></i></button>
+							<button class="btn btn-danger" onclick="confirm_del('<?= base_url('prodi/remove/') . $key->id_prodi ?>')"><i class="bi bi-trash3-fill"></i></button>
 						</td>
 					</tr>
 				<?php

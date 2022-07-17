@@ -1,8 +1,8 @@
 <?php foreach ($barang as $key) { ?>
-	<div class="col-12 col-lg-4 col-md-6">
+	<div class="col-12 col-lg-3 col-md-6">
 		<div class="card shadow-sm">
 			<div class="card-content">
-				<img class="card-img-top img-thumbnail p-4" src="<?= base_url('public/assets/images/barang/' . $key->gambar_barang) ?>" alt=" Card image cap" style="height: 20rem" />
+				<img class="card-img-top img-thumbnail p-4" src="<?= base_url('public/assets/images/barang/' . $key->gambar_barang) ?>" alt=" Card image cap" style="height: 15rem" />
 				<div class="card-body">
 					<h6 class="fs-6 fw-bold text-truncate"><?= $key->nama_barang ?></h6>
 					<div class="mb-3">

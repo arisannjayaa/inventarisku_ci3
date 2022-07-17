@@ -25,10 +25,10 @@
 						<td><?= $key->harga_barang ?></td>
 						<td style="width: 20%;">
 							<a href="<?= base_url('barang/edit/') . $key->id_barang ?>" class="btn btn-warning">
-								<i class="fa-fw select-all fas"></i>
+								<i class="bi bi-pen-fill"></i>
 							</a>
-							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $key->id_barang ?>"><i class="fa-fw select-all fas"></i></button>
-							<button class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_barang ?>')"></i></button>
+							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $key->id_barang ?>"><i class="bi bi-eye-fill"></i></button>
+							<button class="btn btn-danger" onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_barang ?>')"><i class="bi bi-trash3-fill"></i></button>
 						</td>
 					</tr>
 				<?php
@@ -40,7 +40,7 @@
 
 <!-- Details modal -->
 <?php foreach ($barang as $detail) { ?>
-	<div class="modal fade text-left modal-borderless" id="edit<?= $detail->id_barang ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	<div class="modal fade text-left modal-borderless" id="detail<?= $detail->id_barang ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -70,6 +70,11 @@
 									<td style="width: 20%;">Harga</td>
 									<td style="width: 1%;">:</td>
 									<td><?= $detail->harga_barang ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%; vertical-align: text-top;">Keterangan</td>
+									<td style="width: 1%; vertical-align: text-top;">:</td>
+									<td><?= $detail->keterangan_barang ?></td>
 								</tr>
 							</table>
 						</div>

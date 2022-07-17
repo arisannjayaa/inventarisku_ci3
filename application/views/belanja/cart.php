@@ -15,6 +15,45 @@
 			</div>
 		</div>
 	<?php } ?>
+	<div class="card">
+		<div class="card-content">
+			<div class="card-body">
+				<h3 class="card-title mb-4">Form Orders</h3>
+				<form action="<?= base_url('') ?>" method="post">
+					<div class="row">
+						<div class="col-6">
+							<div class="form-group">
+								<label for="nama">Tanggal Sewa</label>
+								<input type="date" id="nama" class="form-control" name="tanggal_sewa" value="<?= date('Y-m-d') ?>">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for="nama">Tanggal Kembali</label>
+								<input type="date" id="nama" class="form-control" name="tanggal_sewa" value="<?= date('Y-m-d') ?>">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="nama">Nama Penyewa</label>
+								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
+							</div>
+							<div class="form-group">
+								<label for="nama"></label>
+								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
+							</div>
+							<div class="form-group">
+								<label for="nama">Keterangan</label>
+								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="col-lg-4 col-12">
 	<div class="card shadow-sm">

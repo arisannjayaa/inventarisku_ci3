@@ -38,6 +38,13 @@
 									<small class="text-danger"><?= form_error('harga') ?></small>
 								</div>
 							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<label for="harga">Keterangan</label>
+									<textarea class="form-control <?= (form_error('keterangan')) ? 'is-invalid' : '' ?>" id="exampleFormControlTextarea1" rows="3"></textarea>
+									<small class="text-danger"><?= form_error('keterangan') ?></small>
+								</div>
+							</div>
 							<div class="col-12 d-flex justify-content-end">
 								<button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
 								<a href="<?= base_url('barang') ?>" class="btn btn-warning me-1 mb-1">Kembali</a>
