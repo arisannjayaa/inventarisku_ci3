@@ -3,40 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Users_model extends CI_Model
 {
-	public function rules()
-	{
-		return [
-			[
-				'field' => 'nama',
-				'label'	=> 'Nama',
-				'rules' => 'required|max_length[50]',
-				"errors" => [
-					'required' => 'Nama tidak boleh kosong',
-					'max_length' => 'Nama telalu panjang (Max 50 Karakter)'
-				],
-			],
-			[
-				'field' => 'stok',
-				'label'	=> 'Stok',
-				'rules' => 'required|integer',
-				"errors" => [
-					'required' => 'Stok tidak boleh kosong'
-				],
-			],
-			[
-				'field' => 'harga',
-				'label'	=> 'Harga',
-				'rules' => 'required|integer',
-				"errors" => [
-					'required' => 'Harga tidak boleh kosong'
-				],
-			],
-		];
-	}
 
 	public function get_all()
 	{
 		$this->db->where('level !=', 'admin');
+		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = tb_user.id_jurusan', 'inner');
+		$this->db->join('tb_prodi', 'tb_prodi.id_prodi = tb_user.id_prodi', 'inner');
 		$query = $this->db->get('tb_user')->result();
 		return $query;
 	}
@@ -66,8 +38,8 @@ class Users_model extends CI_Model
 
 	public function get_details($id)
 	{
-		$this->db->where('id_barang', $id);
-		$result = $this->db->get('tb_barang')->result();
+		$this->db->where('id_user', $id);
+		$result = $this->db->get('tb_user')->result();
 		return $result;
 	}
 

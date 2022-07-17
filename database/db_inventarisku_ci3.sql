@@ -74,26 +74,28 @@ insert into tb_barang(nama_barang, stok_barang, harga_barang) values
 ('Tripod Kamera', 2, 20000),
 ('Zhiyun Smooth 2', 1, 70000);
 
-
-create table tb_orders(
-	id_orders int primary key auto_increment,
-	id_user varchar(20),
-	id_barang int,
-	tanggal_pinjam date,
+create table transaksi (
+	id_transaksi int primary key auto_increment,
+	id_user int,
+	tanggal_sewa date,
 	tanggal_kembali date,
-	jumlah_orders int,
-	catatan text,
-	metode_bayar enum('transfer', 'bayar ditempat');
-	status_bayar enum('lunas', 'belum'),
-	status_pesanan enum ('proses', 'diambil');
+	jumlah_barang,
+	keterangan varchar(255)
+)
+
+create table keranjang(
+	id_user int,
+	item varchar(255),
+	harga int,
+	jumlah int
 );
 
-create table tb_transaksi(
-	id_transaksi,
-	id_orders,
-	status_bayar,
-	status_pengembalian enum('belum', 'kembali')
-);
+-- create table tb_transaksi(
+-- 	id_transaksi,
+-- 	id_orders,
+-- 	status_bayar,
+-- 	status_pengembalian enum('belum', 'kembali')
+-- );
 
 
 

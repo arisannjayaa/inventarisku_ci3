@@ -72,7 +72,14 @@
 								<div class="col-12">
 									<div class="form-group">
 										<label for="agama">Agama</label>
-										<input value="<?= $key->agama ?>" type="text" id="agama" class="form-control" name="agama" placeholder="Agama">
+										<select class="choices form-select" name="agama">
+											<option value="">Pilih nama agama</option>
+											<option value="Hindu" <?= ($key->agama == 'Hindu') ? 'selected' : '' ?>>Hindu</option>
+											<option value="Islam" <?= ($key->agama == 'Islam') ? 'selected' : '' ?>>Islam</option>
+											<option value="Katolik" <?= ($key->agama == 'Katolik') ? 'selected' : '' ?>>Katolik</option>
+											<option value="Protestan" <?= ($key->agama == 'Protestan') ? 'selected' : '' ?>>Protestan</option>
+											<option value="Konghuchu" <?= ($key->agama == 'Konghuchu') ? 'selected' : '' ?>>Konghuchu</option>
+										</select>
 										<small class="text-danger"><?= form_error('agama') ?></small>
 									</div>
 								</div>

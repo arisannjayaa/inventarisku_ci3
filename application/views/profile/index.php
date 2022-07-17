@@ -3,11 +3,15 @@
 		<span><?= $card_header ?></span>
 	</div>
 	<div class="card-body">
-		<div class="row mb-3">
+		<div class="row">
 			<div class="col-4">
-				<img alt="" class="img-thumbnail p-3 img-preview" src="<?= base_url('public/assets/images/avatars/' . $profile->avatar) ?>" style="height: 400px; width: 400px; ">
+				<img alt="" class="img-thumbnail p-3 img-preview mb-3" src="<?= base_url('public/assets/images/avatars/' . $profile->avatar) ?>" style="height: 300px; width: 400px; ">
+				<div class="d-grid">
+					<a href="<?= base_url('profile/edit') ?>" class="btn btn-primary mb-2">Edit Profile</a>
+					<a href="<?= base_url('reset-password') ?>" class="btn btn-secondary mb-2">Reset Password</a>
+				</div>
 			</div>
-			<div class="col-8">
+			<div class="col-7">
 				<table class="table table-borderless">
 					<tr>
 						<td style="width: 20%;">Username</td>
@@ -60,14 +64,6 @@
 						<td><?= $profile->tanggal_lahir ?></td>
 					</tr>
 				</table>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-4">
-				<div class="d-grid">
-					<a href="<?= base_url('profile/edit') ?>" class="btn btn-primary mb-2">Edit Profile</a>
-					<a href="<?= base_url('reset-password') ?>" class="btn btn-secondary mb-2">Reset Password</a>
-				</div>
 			</div>
 		</div>
 	</div>

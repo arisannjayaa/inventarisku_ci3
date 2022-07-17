@@ -21,8 +21,6 @@ if ($this->session->flashdata('add_success')) { ?>
 					<th>Nama</th>
 					<th>No Telepon</th>
 					<th>Email</th>
-					<th>Agama</th>
-					<th>Jenis Kelamin</th>
 					<th style="width: 20%;">Aksi</th>
 				</tr>
 			</thead>
@@ -36,14 +34,12 @@ if ($this->session->flashdata('add_success')) { ?>
 						<td><?= $key->nama_lengkap ?></td>
 						<td><?= $key->no_telp ?></td>
 						<td><?= $key->email ?></td>
-						<td><?= $key->agama ?></td>
-						<td><?= $key->jenis_kelamin ?></td>
 						<td>
-							<a href="<?= base_url('prodi/edit/') . $key->id_prodi ?>" class="btn btn-warning">
+							<a href="<?= base_url('users/edit/') . $key->id_user ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
-							<a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#border-less"><i class="fa-fw select-all fas"></i></a>
-							<a href="<?= base_url('prodi/remove/') . $key->id_prodi ?>" class="btn btn-danger"><i class="fa-fw select-all fas"></i></a>
+							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $key->id_user ?>"><i class="fa-fw select-all fas"></i></button>
+							<button onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_user ?>')" class="btn btn-danger"><i class="fa-fw select-all fas"></i></button>
 						</td>
 					</tr>
 				<?php
@@ -52,43 +48,78 @@ if ($this->session->flashdata('add_success')) { ?>
 		</table>
 	</div>
 </div>
-<div class="modal fade text-left modal-borderless" id="border-less" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Details</h5>
-				<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
-					<i data-feather="x"></i>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col">
-						<div class="card">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-6">
-										<img src="<?= base_url('public/dist/assets/images/barang/yamaha.jpg') ?>" class="img-fluid" alt="">
-									</div>
-									<div class="col">
-										<h1></h1>
-									</div>
-								</div>
-							</div>
+<?php foreach ($users as $detail) { ?>
+	<div class="modal fade text-left modal-borderless" id="edit<?= $detail->id_user ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Detail Barang</h5>
+					<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+						<i data-feather="x"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row mb-3">
+						<div class="col-4">
+							<img alt="" class="img-thumbnail p-3 img-preview" src="<?= base_url('public/assets/images/avatars/' . $detail->avatar) ?>" style="height: 250px; width: 300px; ">
+						</div>
+						<div class="col-8">
+							<table class="table table-borderless">
+								<tr>
+									<td style="width: 20%;">Username</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->username ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">NIM</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->nim ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Nama</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->nama_lengkap ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Jurusan</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->nama_jurusan ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Prodi</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->nama_prodi ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Email</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->email ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Agama</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->agama ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Alamat</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->alamat ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Jenis Kelamin</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->jenis_kelamin ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Tanggal Lahir</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->tanggal_lahir ?></td>
+								</tr>
+							</table>
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-light-primary" data-bs-dismiss="modal">
-						<i class="bx bx-x d-block d-sm-none"></i>
-						<span class="d-none d-sm-block">Close</span>
-					</button>
-					<button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-						<i class="bx bx-check d-block d-sm-none"></i>
-						<span class="d-none d-sm-block">Accept</span>
-					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+<?php } ?>

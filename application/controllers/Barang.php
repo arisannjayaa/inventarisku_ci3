@@ -170,7 +170,7 @@ class Barang extends CI_Controller
 						$this->session->set_flashdata('add_success', '<div class="alert alert-light-success">Data berhasil diupdate</div>');
 						redirect(base_url('barang'));
 					} else {
-						$gambar_lama = './public/assets/images/barang/' . trim($post['gambar_lama']);
+						$gambar_lama = './public/assets/images/gambar/' . trim($post['gambar_lama']);
 						if ($post['gambar_lama'] == 'default.png') {
 							$post['gambar'] = $this->upload->data('file_name');
 							$this->Barang_model->update($post);
@@ -199,11 +199,15 @@ class Barang extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$row = $this->db->query("select gambar_barang from tb_barang where id_barang='$id'")->row();
-				$gambar = './public/assets/images/barang/' . trim($row->gambar_barang);
-				unlink($gambar);
-				$this->Barang_model->delete($id);
-				$this->session->set_flashdata('delete_success', '<div class="alert alert-light-danger">Data berhasil dihapus</div>');
-				redirect('barang');
+				if ($row->gambar_barang == 'default.png') {
+					$this->Barang_model->delete($id);
+					$this->session->set_flashdata('delete_success', '<div class="alert alert-light-danger">Data berhasil dihapus</div>');
+					redirect('barang');
+				} else {
+					$this->Barang_model->delete($id);
+					$this->session->set_flashdata('delete_success', '<div class="alert alert-light-danger">Data berhasil dihapus</div>');
+					redirect('barang');
+				}
 			} else {
 				redirect(base_url(''));
 			}

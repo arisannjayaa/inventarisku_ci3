@@ -11,7 +11,6 @@
 						<span class="d-block fw-bold <?= ($key->stok_barang > 0) ? 'text-success' : 'text-danger' ?>"><?= ($key->stok_barang > 0) ? 'Tersedia' : 'Kosong' ?></span>
 					</div>
 					<div class="d-grid gap-2">
-						<a class="btn btn-outline-primary">Detail</a>
 						<a href="<?= base_url('belanja/addcart/' . $key->id_barang) ?>" class="btn btn-primary <?= ($key->stok_barang <= 0) ? 'disabled' : '' ?>">Keranjang</a>
 					</div>
 				</div>

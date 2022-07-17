@@ -7,7 +7,7 @@
 <script src="<?= base_url('') ?>public/assets/js/extensions/datatables.js"></script>
 <script src="<?= base_url('') ?>public/assets/js/app.js"></script>
 <script src="<?= base_url('') ?>public/assets/js/extensions/filepond.js"></script>
-<script>
+<script type="text/javascript">
 	function img_preview() {
 		const gambar = document.querySelector("#gambar");
 		const gambar_preview = document.querySelector(".img-preview");

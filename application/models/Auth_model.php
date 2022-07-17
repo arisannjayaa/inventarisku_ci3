@@ -72,7 +72,7 @@ class Auth_model extends CI_Model
 			[
 				'field' => 'password',
 				'label'	=> 'Password',
-				'rules' => 'required|max_length[30]',
+				'rules' => 'required|max_length[30]|min_length[8]',
 				"errors" => [
 					'required' => 'Password tidak boleh kosong',
 					'min_length' => 'Password minimal (Min 8 Karakter)',

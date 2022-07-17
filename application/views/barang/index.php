@@ -27,8 +27,8 @@
 							<a href="<?= base_url('barang/edit/') . $key->id_barang ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
-							<a class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#border-less"><i class="fa-fw select-all fas"></i></a>
-							<a class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_barang ?>')"></i></a>
+							<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $key->id_barang ?>"><i class="fa-fw select-all fas"></i></button>
+							<button class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('barang/remove/') . $key->id_barang ?>')"></i></button>
 						</td>
 					</tr>
 				<?php
@@ -37,3 +37,45 @@
 		</table>
 	</div>
 </div>
+
+<!-- Details modal -->
+<?php foreach ($barang as $detail) { ?>
+	<div class="modal fade text-left modal-borderless" id="edit<?= $detail->id_barang ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Detail Barang</h5>
+					<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+						<i data-feather="x"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row mb-3">
+						<div class="col-4">
+							<img alt="" class="img-thumbnail p-3 img-preview img-fluid" src="<?= base_url('public/assets/images/barang/' . $detail->gambar_barang) ?>" style="height: 250px; width: 250px; ">
+						</div>
+						<div class="col-8">
+							<table class="table table-borderless">
+								<tr>
+									<td style="width: 20%;">Nama</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->nama_barang ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Stok</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->stok_barang ?></td>
+								</tr>
+								<tr>
+									<td style="width: 20%;">Harga</td>
+									<td style="width: 1%;">:</td>
+									<td><?= $detail->harga_barang ?></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>

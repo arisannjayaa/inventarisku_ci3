@@ -25,7 +25,7 @@
 							<a href="<?= base_url('jurusan/edit/') . $key->id_jurusan ?>" class="btn btn-warning">
 								<i class="fa-fw select-all fas"></i>
 							</a>
-							<a class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('jurusan/remove/') . $key->id_jurusan ?>')"></i></a>
+							<button class="btn btn-danger"><i class="fa-fw select-all fas" onclick="confirm_del('<?= base_url('jurusan/remove/') . $key->id_jurusan ?>')"></i></button>
 						</td>
 					</tr>
 				<?php
