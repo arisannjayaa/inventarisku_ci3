@@ -58,13 +58,14 @@
 							</a>
 						</li>
 
-
-						<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
-							<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
-								<i class="bi bi-arrow-return-right"></i>
-								<span>Pengembalian</span>
-							</a>
-						</li>
+						<?php if ($this->session->userdata('level') == 'admin') { ?>
+							<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
+								<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
+									<i class="bi bi-arrow-return-right"></i>
+									<span>Pengembalian</span>
+								</a>
+							</li>
+						<?php } ?>
 
 						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
 							<a href="<?= base_url('transaksi') ?>" class='sidebar-link'>
@@ -73,8 +74,8 @@
 							</a>
 						</li>
 
-						<li class="sidebar-title">Master Data</li>
 						<?php if ($this->session->userdata('level') == 'admin') { ?>
+							<li class="sidebar-title">Master Data</li>
 							<li class="sidebar-item has-sub <?= ($side_menu == 'Master Data') ? 'active' : ''; ?>">
 								<a href="<?= base_url('') ?>" class='sidebar-link'>
 									<i class="bi bi-archive-fill"></i>

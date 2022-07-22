@@ -19,19 +19,21 @@ class Auth_model extends CI_Model
 			[
 				'field' => 'nim',
 				'label'	=> 'NIM',
-				'rules' => 'required|max_length[20]',
+				'rules' => 'required|max_length[20]|is_unique[tb_user.nim]',
 				"errors" => [
 					'required' => 'NIM tidak boleh kosong',
 					'max_length' => 'NIM telalu panjang (Max 20 Karakter)',
+					'is_unique' => 'NIM sudah terdaftar. Gunakan NIM lainnya',
 				],
 			],
 			[
 				'field' => 'no_telp',
 				'label'	=> 'No Telepon',
-				'rules' => 'required|integer|max_length[20]',
+				'rules' => 'required|integer|max_length[20]|is_unique[tb_user.no_telp]',
 				"errors" => [
 					'required' => 'No Telepon tidak boleh kosong',
 					'max_length' => 'No Telepon telalu panjang (Max 20 Karakter)',
+					'is_unique' => 'No Telelpon sudah terdaftar. Gunakan No Telelpon lainnya'
 				],
 			],
 			[
@@ -51,22 +53,14 @@ class Auth_model extends CI_Model
 				],
 			],
 			[
-				'field' => 'no_telp',
-				'label'	=> 'No Telepon',
-				'rules' => 'required|integer|max_length[20]',
-				"errors" => [
-					'required' => 'No Telepon tidak boleh kosong',
-					'max_length' => 'No Telepon telalu panjang (Max 20 Karakter)',
-				],
-			],
-			[
 				'field' => 'username',
 				'label'	=> 'Username',
-				'rules' => 'required|min_length[8]|max_length[30]',
+				'rules' => 'required|min_length[8]|max_length[30]|is_unique[tb_user.username]',
 				"errors" => [
 					'required' => 'Username tidak boleh kosong',
 					'min_length' => 'Username minimal (Min 8 Karakter)',
 					'max_length' => 'Username telalu panjang (Max 30 Karakter)',
+					'is_unique' => 'Username sudah terdaftar. Gunakan username lainnya',
 				],
 			],
 			[

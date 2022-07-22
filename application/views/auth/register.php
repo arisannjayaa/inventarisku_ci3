@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
+	<title>Register</title>
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/main/app.css">
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/auth.css">
 	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.svg" type="image/x-icon">
@@ -19,7 +19,7 @@
 				<div class="col-lg-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="text-center fs-4 text-dark">Login | Inventaris<span class="text-primary">Ku</span></h1>
+							<h1 class="text-center fs-4 text-dark">Register | Inventaris<span class="text-primary">Ku</span></h1>
 						</div>
 					</div>
 					<div class="card shadow-sm">

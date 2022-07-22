@@ -41,10 +41,6 @@
 								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
 							</div>
 							<div class="form-group">
-								<label for="nama"></label>
-								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
-							</div>
-							<div class="form-group">
 								<label for="nama">Keterangan</label>
 								<input type="text" id="nama" class="form-control" name="tanggal_sewa" placeholder="Keterangan">
 							</div>
