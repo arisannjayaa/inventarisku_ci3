@@ -59,8 +59,8 @@
 						</li>
 
 						<?php if ($this->session->userdata('level') == 'admin') { ?>
-							<li class="sidebar-item <?= ($sidebar_item == 'Data Orders') ? 'active' : ''; ?>">
-								<a href="<?= base_url('pemesanan') ?>" class='sidebar-link'>
+							<li class="sidebar-item <?= ($sidebar_item == 'Data Pengembalian') ? 'active' : ''; ?>">
+								<a href="<?= base_url('pengembalian') ?>" class='sidebar-link'>
 									<i class="bi bi-arrow-return-right"></i>
 									<span>Pengembalian</span>
 								</a>

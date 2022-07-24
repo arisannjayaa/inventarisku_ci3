@@ -9,6 +9,7 @@ class Prodi extends CI_Controller
 		parent::__construct();
 		$this->load->model('Prodi_model');
 	}
+
 	public function index()
 	{
 		$sesi = $this->session->userdata();
