@@ -71,6 +71,39 @@ class Belanja extends CI_Controller
 		}
 	}
 
+	public function cekout_pesanan()
+	{
+		$data = $this->input->post();
+		// foreach ($this->cart->contents() as $cart) {
+		// 	echo count($cart['rowid']);
+		// }
+		$p = $this->cart->contents();
+		$p = count($p);
+		// echo count($p);
+		// echo $cart['rowid'];
+		// var_dump($this->cart->contents());
+		// die();
+		for ($i = 0; $i < $p; $i++) {
+			foreach ($this->cart->contents() as $cart) {
+				$insert_transaksi = [
+					'id_transaksi' => $cart['rowid'],
+					'tanggal_sewa' => $data['tanggal_sewa'],
+					'tanggal_kembali' => $data['tanggal_kembali'],
+					'keterangan' => $data['keterangan'],
+				];
+			}
+			$this->db->insert('tb_transaksi', $insert_transaksi);
+		}
+
+		foreach ($this->cart->contents() as $cart) {
+			$insert_detail_transaksi = [
+				'id_transaksi' => $cart['rowid'],
+				'id_user' => $this->session->userdata('id_user'),
+				'id_barang' => $cart['id'],
+			];
+		}
+	}
+
 	public function remove_cart()
 	{
 		$this->cart->destroy();

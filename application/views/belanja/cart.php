@@ -25,8 +25,80 @@
 			</div>
 			<hr>
 			<div class="d-grid">
-				<a href="<?= base_url('cekout') ?>" class="btn btn-primary p-2">Pesan</a>
+				<button data-bs-toggle="modal" data-bs-target="#pesan" href="<?= base_url('cekout') ?>" class="btn btn-primary p-2">Pesan</button>
 			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade text-left modal-borderless" id="pesan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Konfirmasi Pesanan</h5>
+				<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+					<i data-feather="x"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<span>Inventaris yang disewa</span>
+				<hr>
+				<table class="table table-borderless">
+					<tr>
+						<td style="width: 5%;">No</td>
+						<td>Nama</td>
+						<td>Jumlah</td>
+						<td>Harga</td>
+					</tr>
+
+					<?php
+					$no = 1;
+					foreach ($this->cart->contents() as $cart) { ?>
+						<tr>
+							<td><?= $no++ ?></td>
+							<td><?= $cart['name'] ?></td>
+							<td><?= $cart['qty'] ?></td>
+							<td>Rp.<?= number_format($cart['price']) ?></td>
+						</tr>
+					<?php } ?>
+				</table>
+				<hr>
+				<form action="<?= base_url('belanja/cekout_pesanan') ?>" method="post">
+					<div class="row">
+						<div class="col">
+							<div class="form-group row align-items-center">
+								<div class="col-lg-3">
+									<label class="col-form-label">Tanggal Sewa</label>
+								</div>
+								<div class="col-lg-9">
+									<input type="date" class="form-control" name="tanggal_sewa" placeholder="Tanggal Sewa" value="<?= date('Y-m-d') ?>">
+								</div>
+							</div>
+							<div class="form-group row align-items-center">
+								<div class="col-lg-3">
+									<label class="col-form-label">Tanggal Kembali</label>
+								</div>
+								<div class="col-lg-9">
+									<input type="date" class="form-control" name="tanggal_kembali" placeholder="Tanggal Kembali" value="<?= date('Y-m-d') ?>">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-3">
+									<label class="col-form-label">Keterangan</label>
+								</div>
+								<div class="col-lg-9">
+									<textarea class="form-control" rows="3" name="keterangan"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+					<i class="bx bx-check d-block d-sm-none"></i>
+					<span class="d-none d-sm-block">Sewa Inventaris</span>
+				</button>
+			</div>
+			</form>
 		</div>
 	</div>
 </div>
