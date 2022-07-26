@@ -74,22 +74,33 @@ insert into tb_barang(nama_barang, stok_barang, harga_barang) values
 ('Tripod Kamera', 2, 20000),
 ('Zhiyun Smooth 2', 1, 70000);
 
-create table tb_transaksi (
-	id_transaksi varchar(100) primary key,
-	tanggal_sewa date,
-	tanggal_kembali date,
-	keterangan varchar(255)
+create table tb_rekening (
+	id_rekening int primary key auto_increment,
+	nama_bank varchar(100),
+	no_rekening int
 );
 
-create table tb_transaksi_detail {
-	id_transaksi_detail int primary key auto_increment,
-	id_transaksi varchar(100),
+create table tb_transaksi (
+	id_transaksi int primary key auto_increment,
 	id_user int,
+	tanggal_sewa date,
+	tanggal_kembali date,
+	keterangan varchar(255),
+	metode_bayar varchar(50),
+	bukti_bayar varchar(255),
+	status_bayar enum('Lunas', 'Proses'),
+	status_sewa enum('Sewa', 'Belum di ambil'),
+	foreign key (id_user) references tb_user(id_user)
+);
+
+create table tb_transaksi_detail (
+	id_transaksi_detail int primary key auto_increment,
+	id_transaksi int,
 	id_barang int,
+	jumlah_sewa int,
 	foreign key (id_transaksi) references tb_transaksi(id_transaksi),
-	foreign key (id_user) references tb_user(id_user),
 	foreign key (id_barang) references tb_barang(id_barang)
-};
+);
 
 create table keranjang(
 	id_user int,

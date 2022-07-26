@@ -66,11 +66,14 @@
 								</a>
 							</li>
 						<?php } ?>
-
+						<?php $transaksi = $this->db->get('tb_transaksi')->num_rows(); ?>
 						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
-							<a href="<?= base_url('transaksi') ?>" class='sidebar-link'>
-								<i class="bi bi-cart-fill"></i>
-								<span>Transaksi</span>
+							<a href="<?= base_url('transaksi') ?>" class='sidebar-link d-flex align-item-center justify-content-between'>
+								<div class="d-flex align-item-center">
+									<i class="bi bi-cart-fill"></i>
+									<span>Transaksi</span>
+								</div>
+								<span class="badge bg-danger"><?= $transaksi ?></span>
 							</a>
 						</li>
 
@@ -93,6 +96,9 @@
 									</li>
 									<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
 										<a href="<?= base_url('users') ?>">Data Users</a>
+									</li>
+									<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
+										<a href="<?= base_url('rekening') ?>">Data Rekening</a>
 									</li>
 								</ul>
 							</li>

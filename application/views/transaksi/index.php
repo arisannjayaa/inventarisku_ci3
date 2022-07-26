@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card table-responsive shadow-sm">
 	<div class="card-header d-flex justify-content-between align-items-center">
 		<span><?= $card_header ?></span>
 		<a href="#" class="btn btn-primary">Tambah</a>
@@ -7,22 +7,57 @@
 		<table class="table" id="table1">
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Nama</th>
-					<th>Stok</th>
-					<th>Harga</th>
+					<th style="width: 2%;">No</th>
+					<th style="width: 30%;">Nama Penyewa</th>
+					<th style="width: 15%;">Tanggal Sewa</th>
+					<th style="width: 15%;">Tanggal Kembali</th>
+					<th>Status Sewa</th>
+					<th>Metode Bayar</th>
+					<th>Status Bayar</th>
+					<th>Bukti Bayar</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<?php
+				$no = 1;
+				foreach ($transaksi as $key) { ?>
+					<tr>
+						<td><?= $no++ ?></td>
+						<td><?= $key->nama_lengkap ?></td>
+						<td><?= $key->tanggal_sewa ?></td>
+						<td><?= $key->tanggal_kembali ?></td>
+						<td><span class="badge <?= ($key->status_sewa == 'Belum di ambil') ? 'bg-warning' : 'bg-success'; ?>"><?= $key->status_sewa ?></span></td>
+						<td><span class="badge <?= ($key->metode_bayar == 'Transfer Bank') ? 'bg-primary' : 'bg-success'; ?>"><?= $key->metode_bayar ?></span></td>
+						<td><span class="badge <?= ($key->status_bayar == 'Proses') ? 'bg-primary' : 'bg-success'; ?>"><?= $key->status_bayar ?></span></td>
+						<td>
+							<span class="badge bg-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bukti<?= $key->id_transaksi ?>"><i class="bi bi-eye-fill"></i></span>
+						</td>
+						<td>
+							<a href="<?= base_url('transaksi/edit/') . $key->id_transaksi ?>" class="badge bg-primary">
+								<i class="bi bi-gear-fill"></i>
+							</a>
+						</td>
+					</tr>
+				<?php	} ?>
 			</tbody>
 		</table>
 	</div>
 </div>
+<?php foreach ($transaksi as $detail) { ?>
+	<div class="modal fade text-left modal-borderless" id="bukti<?= $detail->id_transaksi ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Bukti Transfer Bank</h5>
+					<button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+						<i data-feather="x"></i>
+					</button>
+				</div>
+				<img alt="" src="<?= base_url('public/assets/upload/transaksi/' . $detail->bukti_bayar) ?>">
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+<?php } ?>

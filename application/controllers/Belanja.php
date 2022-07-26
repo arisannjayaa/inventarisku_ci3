@@ -44,6 +44,7 @@ class Belanja extends CI_Controller
 			'img'		=> $barang[0]['gambar_barang']
 		];
 		$this->cart->insert($data);
+		$this->db->query("update tb_barang set stok_barang=stok_barang-1 where id_barang='$id'");
 		redirect('belanja');
 	}
 
@@ -74,33 +75,41 @@ class Belanja extends CI_Controller
 	public function cekout_pesanan()
 	{
 		$data = $this->input->post();
-		// foreach ($this->cart->contents() as $cart) {
-		// 	echo count($cart['rowid']);
-		// }
-		$p = $this->cart->contents();
-		$p = count($p);
-		// echo count($p);
-		// echo $cart['rowid'];
-		// var_dump($this->cart->contents());
-		// die();
-		for ($i = 0; $i < $p; $i++) {
-			foreach ($this->cart->contents() as $cart) {
-				$insert_transaksi = [
-					'id_transaksi' => $cart['rowid'],
-					'tanggal_sewa' => $data['tanggal_sewa'],
-					'tanggal_kembali' => $data['tanggal_kembali'],
-					'keterangan' => $data['keterangan'],
-				];
-			}
-			$this->db->insert('tb_transaksi', $insert_transaksi);
-		}
+		$file_name 						= 'transaksi-' . date('ymd') . '-' . substr(md5(rand()), 0, 100);
+		$config['upload_path']          = FCPATH . '/public/assets/upload/transaksi';
+		$config['allowed_types']        = 'jpg|jpeg|png';
+		$config['file_name']            = $file_name;
+		$config['overwrite']            = true;
+		$config['max_size']             = 1024; // 1MB
 
-		foreach ($this->cart->contents() as $cart) {
-			$insert_detail_transaksi = [
-				'id_transaksi' => $cart['rowid'],
-				'id_user' => $this->session->userdata('id_user'),
-				'id_barang' => $cart['id'],
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('bukti_bayar')) {
+			$data['bukti_bayar'] = $this->upload->data('file_name');
+			$insert_1 = [
+				'id_user'			=> $this->session->userdata('id_user'),
+				'tanggal_sewa' 		=> $data['tanggal_sewa'],
+				'tanggal_kembali' 	=> $data['tanggal_kembali'],
+				'metode_bayar'		=> $data['metode_bayar'],
+				'bukti_bayar'		=> $data['bukti_bayar'],
+				'keterangan'		=> $data['keterangan'],
 			];
+
+			$this->db->insert('tb_transaksi', $insert_1);
+			$id_transaksi = $this->db->insert_id();
+
+			foreach ($this->cart->contents() as $cart) {
+				$insert_2 = array(
+					'id_transaksi' => $id_transaksi,
+					'id_barang' => $cart['id'],
+					'jumlah_sewa' => $cart['qty']
+				);
+				$this->db->insert('tb_transaksi_detail', $insert_2);
+			}
+
+			$this->cart->destroy();
+			$this->session->set_flashdata('cekout_sukses', '<div class="alert alert-light-success">Silahkan ambil barang yang kamu sewa ditempat penyewaan :)</div>');
+			redirect(base_url('belanja'));
 		}
 	}
 

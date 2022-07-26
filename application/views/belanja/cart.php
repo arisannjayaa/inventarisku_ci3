@@ -62,7 +62,21 @@
 					<?php } ?>
 				</table>
 				<hr>
-				<form action="<?= base_url('belanja/cekout_pesanan') ?>" method="post">
+				<form action="<?= base_url('belanja/cekout_pesanan') ?>" method="post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col">
+							<div class="alert alert-light-primary color-primary">
+								<p>Jika menggunakan metode pembayaran transfer bank, kirim ke salah satu rekening berikut:</p>
+								<table class="table table-borderless">
+									<tr>
+										<td style="width: 10px;">BNI</td>
+										<td style="width: 5px;">:</td>
+										<td>3482473</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col">
 							<div class="form-group row align-items-center">
@@ -79,6 +93,29 @@
 								</div>
 								<div class="col-lg-9">
 									<input type="date" class="form-control" name="tanggal_kembali" placeholder="Tanggal Kembali" value="<?= date('Y-m-d') ?>">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-3">
+									<label class="col-form-label">Metode Pembayaran</label>
+								</div>
+								<div class="col-lg-9">
+									<input class="form-check-input" type="radio" name="metode_bayar" id="Transfer" onclick="show_transfer(0)" checked value="Transfer Bank">
+									<label class="form-check-label" for="Transfer">
+										Transfer Bank
+									</label>
+									<input class="form-check-input" type="radio" name="metode_bayar" id="Langsung" onclick="show_transfer(1)" value="Bayar Langsung">
+									<label class="form-check-label" for="Langsung">
+										Bayar Langsung
+									</label>
+								</div>
+							</div>
+							<div class="form-group row" id="mytransfer">
+								<div class="col-lg-3">
+									<label class="col-form-label">Bukti Pembayaran</label>
+								</div>
+								<div class="col-lg-9">
+									<input class="form-control" type="file" name="bukti_bayar">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -102,3 +139,10 @@
 		</div>
 	</div>
 </div>
+<script>
+	function show_transfer(x) {
+		if (x == 0) document.getElementById("mytransfer").style.display = '';
+		else document.getElementById("mytransfer").style.display = 'none';
+		return;
+	}
+</script>

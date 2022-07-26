@@ -79,6 +79,8 @@
 			<div class="content-wrapper container">
 				<?php if ($this->session->flashdata('logged')) {
 					echo $this->session->flashdata('logged');
+				} elseif ($this->session->flashdata('cekout_sukses')) {
+					echo $this->session->flashdata('cekout_sukses');
 				} ?>
 				<div class="page-heading">
 					<h3><?= $heading ?></h3>
