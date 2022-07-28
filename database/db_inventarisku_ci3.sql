@@ -88,8 +88,8 @@ create table tb_transaksi (
 	keterangan varchar(255),
 	metode_bayar varchar(50),
 	bukti_bayar varchar(255),
-	status_bayar enum('Lunas', 'Proses'),
-	status_sewa enum('Sewa', 'Belum di ambil'),
+	status_bayar enum('Lunas', 'Menunggu') default 'Menunggu',
+	status_sewa enum('Sewa', 'Menunggu', 'Kembali', 'Dibatalkan') default 'Menunggu',
 	foreign key (id_user) references tb_user(id_user)
 );
 
@@ -101,20 +101,6 @@ create table tb_transaksi_detail (
 	foreign key (id_transaksi) references tb_transaksi(id_transaksi),
 	foreign key (id_barang) references tb_barang(id_barang)
 );
-
-create table keranjang(
-	id_user int,
-	item varchar(255),
-	harga int,
-	jumlah int
-);
-
--- create table tb_transaksi(
--- 	id_transaksi,
--- 	id_orders,
--- 	status_bayar,
--- 	status_pengembalian enum('belum', 'kembali')
--- );
 
 
 

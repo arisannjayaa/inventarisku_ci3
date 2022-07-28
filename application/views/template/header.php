@@ -66,7 +66,13 @@
 								</a>
 							</li>
 						<?php } ?>
-						<?php $transaksi = $this->db->get('tb_transaksi')->num_rows(); ?>
+						<?php if ($this->session->userdata('level') == 'admin') {
+							$transaksi = $this->db->get('tb_transaksi')->num_rows();
+						} else {
+							$id = $this->session->userdata('id_user');
+							$transaksi = $this->db->query("select id_user from tb_transaksi where id_user='$id'")->num_rows();
+						}
+						?>
 						<li class="sidebar-item <?= ($sidebar_item == 'Data Transaksi') ? 'active' : ''; ?>">
 							<a href="<?= base_url('transaksi') ?>" class='sidebar-link d-flex align-item-center justify-content-between'>
 								<div class="d-flex align-item-center">
@@ -97,7 +103,7 @@
 									<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
 										<a href="<?= base_url('users') ?>">Data Users</a>
 									</li>
-									<li class="submenu-item <?= ($submenu_item == 'Data Users') ? 'active' : ''; ?>">
+									<li class="submenu-item <?= ($submenu_item == 'Data Rekening') ? 'active' : ''; ?>">
 										<a href="<?= base_url('rekening') ?>">Data Rekening</a>
 									</li>
 								</ul>
@@ -143,7 +149,7 @@
 								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
 									<li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="icon-mid bi bi-person me-2"></i>Profile Saya</a></li>
 									<?php if ($this->session->userdata('level') != 'admin') { ?>
-										<li><a class="dropdown-item" href="<?= base_url('belanja') ?>"><i class="icon-mid bi bi-cart me-2"></i>Belanja</a></li>
+										<li><a class="dropdown-item" href="<?= base_url('belanja') ?>"><i class="icon-mid bi bi-cart me-2"></i>Sewa</a></li>
 										<hr class="dropdown-divider">
 										</li>
 									<?php } ?>

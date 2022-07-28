@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Jurusan extends CI_Controller
+class Rekening extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Jurusan_model');
+		$this->load->model('Rekening_model');
 	}
 
 	public function index()
@@ -16,17 +16,17 @@ class Jurusan extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$data = [
-					'heading' 		=> 'Master Data Jurusan',
-					'title'			=> 'Master Data Jurusan',
-					'card_header'	=> 'List Data Jurusan',
+					'heading' 		=> 'Master Data Rekening',
+					'title'			=> 'Master Data Rekening',
+					'card_header'	=> 'List Data Rekening',
 					'side_menu'		=> 'Master Data',
-					'submenu_item'	=> 'Data Jurusan',
+					'submenu_item'	=> 'Data Rekening',
 					'sidebar_item'	=> '',
-					'jurusan'		=> $this->Jurusan_model->get_all()
+					'rekening'		=> $this->Rekening_model->get_all()
 				];
 
 				$this->load->view('template/header', $data);
-				$this->load->view('jurusan/index', $data);
+				$this->load->view('rekening/index', $data);
 				$this->load->view('template/footer');
 			} else {
 				redirect(base_url(''));
@@ -42,15 +42,15 @@ class Jurusan extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$data = [
-					'heading' 		=> 'Tambah Data Jurusan',
-					'title'			=> 'Tambah Data Jurusan',
+					'heading' 		=> 'Tambah Data Rekening',
+					'title'			=> 'Tambah Data Rekening',
 					'side_menu'		=> 'Master Data',
-					'submenu_item'	=> 'Data Jurusan',
+					'submenu_item'	=> 'Data Rekening',
 					'sidebar_item'	=> ''
 				];
 
 				$this->load->view('template/header', $data);
-				$this->load->view('jurusan/tambah', $data);
+				$this->load->view('rekening/tambah', $data);
 				$this->load->view('template/footer');
 			} else {
 				redirect(base_url(''));
@@ -65,25 +65,25 @@ class Jurusan extends CI_Controller
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
-				$rules = $this->Jurusan_model->rules();
+				$rules = $this->Rekening_model->rules();
 				$this->form_validation->set_rules($rules);
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
-						'heading' 		=> 'Tambah Data Jurusan',
-						'title'			=> 'Master Data Jurusan',
-						'card_header'	=> 'List Data Jurusan',
+						'heading' 		=> 'Tambah Data Rekening',
+						'title'			=> 'Master Data Rekening',
+						'card_header'	=> 'List Data Rekening',
 						'side_menu'		=> 'Master Data',
-						'submenu_item'	=> 'Data Jurusan',
+						'submenu_item'	=> 'Data Rekening',
 						'sidebar_item'	=> ''
 					];
 
 					$this->load->view('template/header', $data);
-					$this->load->view('jurusan/tambah');
+					$this->load->view('rekening/tambah');
 					$this->load->view('template/footer');
 				} else {
-					$this->Jurusan_model->insert();
+					$this->Rekening_model->insert();
 					$this->session->set_flashdata('add_success', '<div class="alert alert-success">Data berhasil ditambahkan</div>');
-					redirect('jurusan');
+					redirect('Rekening');
 				}
 			} else {
 				redirect(base_url(''));
@@ -99,16 +99,16 @@ class Jurusan extends CI_Controller
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
 				$data = [
-					'heading' 		=> 'Edit Data Jurusan',
-					'title'			=> 'Edit Data Jurusan',
+					'heading' 		=> 'Edit Data Rekening',
+					'title'			=> 'Edit Data Rekening',
 					'side_menu'		=> 'Master Data',
-					'submenu_item'	=> 'Data Jurusan',
+					'submenu_item'	=> 'Data Rekening',
 					'sidebar_item'	=> '',
-					'jurusan'		=> $this->Jurusan_model->get_details($id)
+					'Rekening'		=> $this->Rekening_model->get_details($id)
 				];
 
 				$this->load->view('template/header', $data);
-				$this->load->view('jurusan/edit', $data);
+				$this->load->view('Rekening/edit', $data);
 				$this->load->view('template/footer');
 			} else {
 				redirect(base_url(''));
@@ -123,21 +123,21 @@ class Jurusan extends CI_Controller
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
-				$rules = $this->Jurusan_model->rules();
+				$rules = $this->Rekening_model->rules();
 				$this->form_validation->set_rules($rules);
 				if ($this->form_validation->run() == FALSE) {
 					$data = [
 						'heading' 		=> 'Edit Data Barang',
 						'title'			=> 'Edit Data Barang',
-						'barang'		=> $this->Jurusan_model->get_details($id)
+						'barang'		=> $this->Rekening_model->get_details($id)
 					];
 					$this->load->view('template/header', $data);
 					$this->load->view('barang/edit', $data);
 					$this->load->view('template/footer');
 				} else {
-					$this->Jurusan_model->update();
+					$this->Rekening_model->update();
 					$this->session->set_flashdata('update_success', '<div class="alert alert-success">Data berhasil diupdate</div>');
-					redirect('jurusan');
+					redirect('Rekening');
 				}
 			} else {
 				redirect(base_url(''));
@@ -152,9 +152,9 @@ class Jurusan extends CI_Controller
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
 			if ($sesi['level'] == 'admin') {
-				$this->Jurusan_model->delete($id);
+				$this->Rekening_model->delete($id);
 				$this->session->set_flashdata('delete_success', '<div class="alert alert-danger">Data berhasil dihapus</div>');
-				redirect('jurusan');
+				redirect('Rekening');
 			} else {
 				redirect(base_url(''));
 			}
@@ -164,4 +164,4 @@ class Jurusan extends CI_Controller
 	}
 }
 
-/* End of file Jurusan.php and path \application\controllers\Jurusan.php */
+/* End of file Rekening.php and path \application\controllers\Rekening.php */

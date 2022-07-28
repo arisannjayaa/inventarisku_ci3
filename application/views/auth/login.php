@@ -20,7 +20,7 @@
 				} elseif ($this->session->flashdata('register_sukses')) {
 					echo $this->session->flashdata('register_sukses');
 				} ?>
-				<div class="card">
+				<div class="card shadow-sm">
 					<div class="card-body">
 						<h1 class="text-center fs-4 text-dark">Login | Inventaris<span class="text-primary">Ku</span></h1>
 					</div>

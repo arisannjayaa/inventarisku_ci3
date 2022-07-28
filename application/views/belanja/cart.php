@@ -4,14 +4,19 @@
 	<?php } ?>
 	<?php
 	foreach ($this->cart->contents() as $cart) { ?>
-		<div class="d-flex mb-4">
-			<div class="d-flex align-items-center justify-content-center bg-white p-2 rounded-3 shadow-sm">
-				<img src="<?= base_url('public/assets/images/barang/' . $cart['img']) ?>" alt=" Card image cap" height="100px" width="100px" />
+		<div class="d-flex justify-content-between mb-4">
+			<div class="d-flex">
+				<div class="d-flex align-items-center justify-content-center bg-white p-2 rounded-3 shadow-sm">
+					<img src="<?= base_url('public/assets/images/barang/' . $cart['img']) ?>" alt=" Card image cap" height="100px" width="100px" />
+				</div>
+				<div class="ms-3 d-flex justify-content-end flex-column">
+					<span class="d-block fs-5 text-primary"><?= $cart['name'] ?></span>
+					<span class="d-block">Jumlah <?= $cart['qty'] ?></span>
+					<span class="d-block fw-bold">Rp.<?= number_format($cart['price']) ?></span>
+				</div>
 			</div>
-			<div class="ms-3 d-flex justify-content-end flex-column">
-				<span class="d-block fs-5 text-primary"><?= $cart['name'] ?></span>
-				<span class="d-block">Jumlah <?= $cart['qty'] ?></span>
-				<span class="d-block fw-bold">Rp.<?= number_format($cart['price']) ?></span>
+			<div class="align-self-end">
+				<a href="<?= base_url('belanja/remove_selected/' . $cart['rowid'] . '/' . $cart['id'] . '/' . $cart['qty']) ?>" class="d-inline fw-bold btn btn-sm btn-danger">Hapus</i></a>
 			</div>
 		</div>
 	<?php } ?>
@@ -25,7 +30,7 @@
 			</div>
 			<hr>
 			<div class="d-grid">
-				<button data-bs-toggle="modal" data-bs-target="#pesan" href="<?= base_url('cekout') ?>" class="btn btn-primary p-2">Pesan</button>
+				<button data-bs-toggle="modal" data-bs-target="#pesan" href="<?= base_url('cekout') ?>" class="btn btn-primary p-2 <?= (!$this->cart->contents()) ? 'disabled' : ''; ?>">Pesan</button>
 			</div>
 		</div>
 	</div>
@@ -68,11 +73,13 @@
 							<div class="alert alert-light-primary color-primary">
 								<p>Jika menggunakan metode pembayaran transfer bank, kirim ke salah satu rekening berikut:</p>
 								<table class="table table-borderless">
-									<tr>
-										<td style="width: 10px;">BNI</td>
-										<td style="width: 5px;">:</td>
-										<td>3482473</td>
-									</tr>
+									<?php foreach ($bank as $rek) { ?>
+										<tr>
+											<td style="width: 10px;"><?= $rek->nama_bank ?></td>
+											<td style="width: 2px;">:</td>
+											<td><?= $rek->no_rekening ?></td>
+										</tr>
+									<?php	} ?>
 								</table>
 							</div>
 						</div>

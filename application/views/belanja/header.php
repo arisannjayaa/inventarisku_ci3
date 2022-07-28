@@ -40,7 +40,7 @@
 									</div>
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton1">
-									<li><a class="dropdown-item" href="#">Profile Saya</a></li>
+									<li><a class="dropdown-item" href="<?= base_url('profile') ?>">Profile Saya</a></li>
 									<li><a class="dropdown-item" href="<?= base_url('') ?>">Dashboard</a></li>
 									<li>
 										<hr class="dropdown-divider">
@@ -63,7 +63,7 @@
 							<li class="menu-item">
 								<a href="<?= base_url('belanja') ?>" class='menu-link'>
 									<i class="bi bi-cart-fill"></i>
-									<span>Belanja <span class="badge bg-danger"></span>
+									<span>Sewa</span>
 								</a>
 							</li>
 							<li class="menu-item">

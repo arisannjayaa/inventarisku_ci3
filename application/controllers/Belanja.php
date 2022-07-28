@@ -53,6 +53,7 @@ class Belanja extends CI_Controller
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged' && $sesi['level'] == 'mahasiswa') {
 			$this->load->model('Barang_model');
+			$this->load->model('Rekening_model');
 			$total_qty = 0;
 			foreach ($this->cart->contents() as $belanja) {
 				$total_qty += $belanja['qty'];
@@ -60,6 +61,7 @@ class Belanja extends CI_Controller
 			$data = [
 				'barang' => $this->Barang_model->get_all(),
 				'cart'	=> $this->cart->contents(),
+				'bank'	=> $this->Rekening_model->get_all(),
 				'belanja' => $total_qty,
 				'title' => 'Keranjang',
 				'heading' => 'Keranjang'
@@ -70,6 +72,14 @@ class Belanja extends CI_Controller
 		} else {
 			redirect(base_url(''));
 		}
+	}
+
+	public function remove_selected($rowid, $id, $stok)
+	{
+
+		$this->db->query("update tb_barang set stok_barang=stok_barang+'$stok' where id_barang='$id'");
+		$this->cart->remove($rowid);
+		redirect(base_url('belanja/keranjang'));
 	}
 
 	public function cekout_pesanan()
@@ -86,31 +96,31 @@ class Belanja extends CI_Controller
 
 		if ($this->upload->do_upload('bukti_bayar')) {
 			$data['bukti_bayar'] = $this->upload->data('file_name');
-			$insert_1 = [
-				'id_user'			=> $this->session->userdata('id_user'),
-				'tanggal_sewa' 		=> $data['tanggal_sewa'],
-				'tanggal_kembali' 	=> $data['tanggal_kembali'],
-				'metode_bayar'		=> $data['metode_bayar'],
-				'bukti_bayar'		=> $data['bukti_bayar'],
-				'keterangan'		=> $data['keterangan'],
-			];
-
-			$this->db->insert('tb_transaksi', $insert_1);
-			$id_transaksi = $this->db->insert_id();
-
-			foreach ($this->cart->contents() as $cart) {
-				$insert_2 = array(
-					'id_transaksi' => $id_transaksi,
-					'id_barang' => $cart['id'],
-					'jumlah_sewa' => $cart['qty']
-				);
-				$this->db->insert('tb_transaksi_detail', $insert_2);
-			}
-
-			$this->cart->destroy();
-			$this->session->set_flashdata('cekout_sukses', '<div class="alert alert-light-success">Silahkan ambil barang yang kamu sewa ditempat penyewaan :)</div>');
-			redirect(base_url('belanja'));
 		}
+		$insert_1 = [
+			'id_user'			=> $this->session->userdata('id_user'),
+			'tanggal_sewa' 		=> $data['tanggal_sewa'],
+			'tanggal_kembali' 	=> $data['tanggal_kembali'],
+			'metode_bayar'		=> $data['metode_bayar'],
+			'bukti_bayar'		=> $data['bukti_bayar'],
+			'keterangan'		=> $data['keterangan'],
+		];
+
+		$this->db->insert('tb_transaksi', $insert_1);
+		$id_transaksi = $this->db->insert_id();
+
+		foreach ($this->cart->contents() as $cart) {
+			$insert_2 = array(
+				'id_transaksi' => $id_transaksi,
+				'id_barang' => $cart['id'],
+				'jumlah_sewa' => $cart['qty']
+			);
+			$this->db->insert('tb_transaksi_detail', $insert_2);
+		}
+
+		$this->cart->destroy();
+		$this->session->set_flashdata('cekout_sukses', '<div class="alert alert-light-success">Silahkan ambil barang yang kamu sewa ditempat penyewaan :)</div>');
+		redirect(base_url('belanja'));
 	}
 
 	public function remove_cart()

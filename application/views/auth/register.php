@@ -17,7 +17,7 @@
 		<div class="container-fluid pt-5">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-5">
-					<div class="card">
+					<div class="card shadow-sm">
 						<div class="card-body">
 							<h1 class="text-center fs-4 text-dark">Register | Inventaris<span class="text-primary">Ku</span></h1>
 						</div>
