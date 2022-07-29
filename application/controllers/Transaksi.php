@@ -14,11 +14,7 @@ class Transaksi extends CI_Controller
 	{
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
-			if ($this->session->userdata('level') == 'admin') {
-				$transaksi = $this->Transaksi_model->get_all();
-			} else {
-				$transaksi = $this->Transaksi_model->get_all_user($sesi['id_user']);
-			}
+			$transaksi = $this->Transaksi_model->get_all();
 			$data = [
 				'heading' 		=> 'Data Transaksi',
 				'title'			=> 'Data Transaksi',
@@ -47,15 +43,27 @@ class Transaksi extends CI_Controller
 		foreach ($result as $cancel) {
 			$this->db->query("update tb_barang set stok_barang=stok_barang+'$cancel->jumlah_sewa' where id_barang='$cancel->id_barang'");
 		}
-		$this->Transaksi_model->set_status_sewa($id);
+		$this->Transaksi_model->set_status_sewa_user($id);
 		redirect(base_url('transaksi'));
 	}
 
-	public function edit($id)
+	public function status_sewa_bayar()
+	{
+		$post = $this->input->post();
+		$data = [
+			'status_sewa' => $post['status_sewa'],
+			'status_bayar' => $post['status_bayar']
+		];
+		$this->db->where('id_transaksi', $post['id_transaksi']);
+		$this->db->update('tb_transaksi', $data);
+		redirect(base_url('transaksi'));
+	}
+
+	public function detail($transaksi, $user)
 	{
 		$sesi = $this->session->userdata();
 		if ($sesi['status'] == 'logged') {
-			if ($sesi['level'] == 'admin') {
+			if ($sesi['level'] == 'admin' || $sesi['level'] == 'mahasiswa') {
 				$data = [
 					'heading' 		=> 'Data Transaksi',
 					'title'			=> 'Data Transaksi',
@@ -63,12 +71,13 @@ class Transaksi extends CI_Controller
 					'side_menu'		=> '',
 					'submenu_item'	=> '',
 					'sidebar_item'	=> 'Data Transaksi',
-					'transaksi'		=> $this->Transaksi_model->get_details($id)
+					'barang'		=> $this->Transaksi_model->get_data_pesanan($transaksi, $user),
+					'user'			=> $this->Transaksi_model->get_data_user_sewa($transaksi, $user)
 				];
 
 
 				$this->load->view('template/header', $data);
-				$this->load->view('transaksi/edit', $data);
+				$this->load->view('transaksi/detail');
 				$this->load->view('template/footer');
 			} else {
 				redirect(base_url(''));

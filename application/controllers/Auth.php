@@ -96,6 +96,27 @@ class Auth extends CI_Controller
 	{
 		$this->load->view('auth/reset_password');
 	}
+
+	public function reset_password_proses()
+	{
+		$id = $this->session->userdata('id_user');
+		$post = $this->input->post();
+		$query = $this->db->query("select password from tb_user where id_user='$id'")->row();
+		if ($query->password == sha1($post['pass_lama'])) {
+			if ($post['pass_baru'] == $post['konfirmasi_pass_baru']) {
+				$this->db->query("update tb_user set password=sha1('$post[pass_baru]') where id_user='$id'");
+				$this->session->sess_destroy();
+				$this->session->set_flashdata('ganti_pass_sukses', '<div class="alert alert-light-success">Password berhasil diganti, silahkan login kembali</div>');
+				redirect(base_url('login'));
+			} else {
+				$this->session->set_flashdata('konfirmasi_pass_salah', '<div class="alert alert-light-danger">Konfirmasi password tidak sama</div>');
+				redirect(base_url('reset-password'));
+			}
+		} else {
+			$this->session->set_flashdata('pass_lama_salah', '<div class="alert alert-light-danger">Password lama salah!!</div>');
+			redirect(base_url('reset-password'));
+		}
+	}
 }
 
 /* End of file Auth.php and path \application\controllers\Auth.php */

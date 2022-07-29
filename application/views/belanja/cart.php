@@ -24,11 +24,7 @@
 <div class="col-lg-4 col-12">
 	<div class="card shadow-sm">
 		<div class="card-body">
-			<div class="d-flex justify-content-between align-items-center">
-				<h5>Total Harga</h5>
-				<h5>Rp.<?= number_format($this->cart->total()) ?></h5>
-			</div>
-			<hr>
+			<h5 class="mb-4">Klik pesan untuk menyewa inventaris :)</h5>
 			<div class="d-grid">
 				<button data-bs-toggle="modal" data-bs-target="#pesan" href="<?= base_url('cekout') ?>" class="btn btn-primary p-2 <?= (!$this->cart->contents()) ? 'disabled' : ''; ?>">Pesan</button>
 			</div>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
+	<title>Reset Password</title>
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/main/app.css">
 	<link rel="stylesheet" href="<?= base_url('') ?>public/assets/css/pages/auth.css">
 	<link rel="shortcut icon" href="<?= base_url('') ?>public/assets/images/logo/favicon.svg" type="image/x-icon">
@@ -14,11 +14,11 @@
 <body>
 	<div id="auth">
 		<div class="row h-100 justify-content-center align-items-center" style="background-color: #F0F1FF;">
-			<div class="col-lg-4 col-10">
-				<?php if ($this->session->flashdata('gagal')) {
-					echo $this->session->flashdata('gagal');
-				} elseif ($this->session->flashdata('register_sukses')) {
-					echo $this->session->flashdata('register_sukses');
+			<div class="col-lg-4 col-10 mt-3">
+				<?php if ($this->session->flashdata('konfirmasi_pass_salah')) {
+					echo $this->session->flashdata('konfirmasi_pass_salah');
+				} elseif ($this->session->flashdata('pass_lama_salah')) {
+					echo $this->session->flashdata('pass_lama_salah');
 				} ?>
 				<div class="card">
 					<div class="card-body">
@@ -28,7 +28,7 @@
 				<div class="card shadow-sm">
 					<div class="card-content">
 						<div class="card-body">
-							<form class="form" method="post" action="<?= base_url('reset-password') ?>">
+							<form class="form" method="post" action="<?= base_url('auth/reset_password_proses') ?>">
 								<div class="form-body">
 									<div class="form-group">
 										<label for="pass_lama">Password Lama</label>

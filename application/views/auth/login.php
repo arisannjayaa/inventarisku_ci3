@@ -19,6 +19,8 @@
 					echo $this->session->flashdata('gagal');
 				} elseif ($this->session->flashdata('register_sukses')) {
 					echo $this->session->flashdata('register_sukses');
+				} elseif ($this->session->flashdata('ganti_pass_sukses')) {
+					echo $this->session->flashdata('ganti_pass_sukses');
 				} ?>
 				<div class="card shadow-sm">
 					<div class="card-body">
